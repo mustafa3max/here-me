@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: true }">
     <x-navbar.main />
     <x-containers.broadcast>
-        @component('components.broadcast.sections', ['sections' => $sections])
+        @component('components.contact-with-me.sections', ['sections' => $sections])
         @endcomponent
         <x-tap.employee-job route="{{ session()->get('route-name') }}">
             <div class="grid grid-cols-1 gap-2">
@@ -11,7 +11,7 @@
                 <ul class="grid grid-cols-12 gap-2" wire:loading.remove>
                     @forelse ($employees as $employee)
                         <div class="col-span-12 md:col-span-6 lg:col-span-4">
-                            @component('components.broadcast.item-index', ['employee' => $employee])
+                            @component('components.contact-with-me.item-index', ['data' => $employee])
                             @endcomponent
                         </div>
                     @empty
@@ -28,3 +28,4 @@
     </x-containers.broadcast>
     <x-footer.main />
 </div>
+@vite('resources/js/join-index.js')

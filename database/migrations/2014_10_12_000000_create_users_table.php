@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('email')->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
-            $table->string('avatar')->default('assets/images/avatar.svg');
+            $table->string('avatar')->nullable();
             $table->boolean('enabled')->default(true);
             $table->boolean('is_guest')->default(false);
             $table->rememberToken();

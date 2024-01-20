@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\ContactWithMe;
 
 use App\Models\ChatRoom;
-use App\Models\Employee;
-use App\Models\User;
 use Livewire\Component;
 
-class CallMe extends Component
+class Index extends Component
 {
 
     public function data() {
@@ -15,10 +13,13 @@ class CallMe extends Component
     }
 
     public function mount() {
+        if($this->data() === null) {
+            return abort(404);
+        }
     }
     public function render()
     {
-        return view('livewire.call-me')->with([
+        return view('livewire.contact-with-me.index')->with([
             'data'=> $this->data()
         ]);
     }

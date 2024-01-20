@@ -17,7 +17,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('title', 255)->require;
             $table->string('description', 5000);
-            $table->string('banner')->default('assets/images/live.svg');
+            $table->string('banner')->nullable();
             $table->boolean('enabled')->default(true);
             $table->bigInteger('quality_score')->default(0);
             $table->json('sections')->default(json_encode([1]));

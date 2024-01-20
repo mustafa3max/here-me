@@ -1,9 +1,9 @@
  <div class="absolute bottom-[60px] left-0 right-0 p-2" x-transition.duration.500ms x-show="showEmojis"
      x-on:click.outside="showEmojis=false">
-     <div class="w-full bg-primary-light p-2 dark:bg-primary-dark" x-data="{ emojisAll: JSON.parse('{{ json_encode($emojis) }}') }">
+     <div class="w-full bg-secondary-light p-2 dark:bg-secondary-dark" x-data="{ emojisAll: JSON.parse('{{ json_encode($emojis) }}') }">
          <ul class="no-scrollbar flex flex-wrap gap-2 overflow-y-auto" x-data="{ emojisTap: Object.keys(emojisAll) }">
              <div x-on:click="showEmojis=false">
-                 <x-button.icon icon="x" title="{{ __('str.close') }}" />
+                 <x-button text="" icon="x" title="{{ __('str.close') }}" type="link"/>
              </div>
              <template x-for="emojiTap in emojisTap">
                  <button type="button" class="p-2 hover:text-accent-light dark:hover:text-accent-dark"

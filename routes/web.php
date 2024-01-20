@@ -8,6 +8,7 @@ use App\Livewire\Auth\SignInGuest;
 use App\Livewire\Auth\SignUp;
 use App\Livewire\Auth\VerifyEmail;
 use App\Livewire\CallMe;
+use App\Livewire\ContactWithMe\Index as CallMeIndex;
 use App\Livewire\Employee\Index as EmployeeIndex;
 use App\Livewire\Job\Index as JobIndex;
 use App\Livewire\Home;
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Home
 Route::get('/', Home::class)->name('home');
-Route::get('call-me/{id}', CallMe::class)->middleware('auth:sanctum')->name('call-me');
+Route::get('call-me/{id}', CallMeIndex::class)->middleware('auth:sanctum')->name('call-me');
 
 // Auth
 Route::scopeBindings()->group(function () {
