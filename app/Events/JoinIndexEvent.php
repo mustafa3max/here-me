@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Ready;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
@@ -34,7 +35,7 @@ class JoinIndexEvent implements ShouldBroadcastNow
     }
 
     public function checked() {
-        $meReady = Ready::where('user_id', $this->userId)->where('enabled', true)->get()->first();
+        $meReady = User::where('id', $this->userId)->where('enabled', true)->where('ready', true)->get()->first();
 
         if($meReady != null) {
             $this->usersNow  = Cache::get('users-now')??[];

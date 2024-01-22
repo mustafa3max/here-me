@@ -30,7 +30,7 @@
             <button onclick="call('video')">
                 <x-button type="link" text="" icon="camera-video-fill" title="video"/>
             </button>
-            <a href="{{ route('employees') }}">
+            <a href="{{ route('readies') }}">
                 <x-button type="link" text="" icon="house-door-fill" title="home"/>
             </a>
         </div>
@@ -45,7 +45,7 @@
     <div class="absolute top-0 bottom-0 w-full flex items-center justify-center bg-primary-light dark:bg-primary-dark bg-opacity-80 dark:bg-opacity-80" x-show="!$store.chat.readyRember">
         <div class="bg-accent-light dark:bg-accent-dark p-2 flex flex-col items-center justify-center ">
             <div class="text-2xl font-extrabold text-primary-light dark:text-primary-dark animate-pulse p-4">{{__('str.waiting_member')}}</div>
-            <a href="{{ route('employees') }}">
+            <a href="{{ route('readies') }}">
                 <x-button type="fill-primary" text="{{__('str.leave_room')}}"/>
             </a>
         </div>

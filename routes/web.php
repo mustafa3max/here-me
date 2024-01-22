@@ -10,6 +10,7 @@ use App\Livewire\Auth\VerifyEmail;
 use App\Livewire\ContactWithMe\Index as CallMeIndex;
 use App\Livewire\Ready\Index as ReadyIndex;
 use App\Livewire\Home;
+use App\Livewire\Interests\Update;
 use App\Livewire\Policy\Privacypolicy;
 use App\Livewire\Policy\Termsofservice;
 
@@ -66,6 +67,13 @@ Route::prefix('user')->group(function () {
 // Readys
 Route::prefix('readies')->group(function () {
     Route::get('/', ReadyIndex::class)->name('readies');
+});
+
+// Interests
+Route::prefix('interests')->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/', Update::class)->name('update-interests');
+    });
 });
 
 // Policy

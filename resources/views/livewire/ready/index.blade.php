@@ -1,18 +1,17 @@
-<div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: true }">
+<div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: false }">
     <x-navbar.main />
     <x-containers.broadcast>
-        @component('components.contact-with-me.sections', ['sections' => $sections])
-        @endcomponent
             <div class="grid grid-cols-1 gap-2">
-                <x-tool.search />
                 <ul class="grid grid-cols-12 gap-2" wire:loading.remove>
-                    @forelse ($data as $job)
+                    @forelse ($data as $user)
                         <div class="col-span-12 md:col-span-6 lg:col-span-4">
-                            @component('components.contact-with-me.item-index', ['data' => $job])
+                            @component('components.contact-with-me.item-index', ['user' => $user])
                             @endcomponent
                         </div>
                     @empty
+                    <x-card.secondary>
                         <x-status.index-empty />
+                    </x-card.secondary>
                     @endforelse
                 </ul>
                 <div wire:loading class="grow">

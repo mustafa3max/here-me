@@ -18,7 +18,9 @@ class User extends Authenticatable
         'password',
         'avatar',
         'enabled',
-        'is_guest'
+        'ready',
+        'is_guest',
+        'interests'
     ];
 
     protected $hidden = [
@@ -27,6 +29,7 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
+        'interests' => 'array',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];

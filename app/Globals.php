@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Events\JoinIndexEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 
@@ -42,6 +43,8 @@ class Globals
     static function logout()
     {
         if (Auth::check()) {
+            JoinIndexEvent::dispatch(Auth::id(), 'exit');
+
             session()->flush();
 
             auth('web')->logout();

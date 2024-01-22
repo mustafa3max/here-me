@@ -4,9 +4,11 @@ namespace App\Livewire\Ready;
 
 use App\Models\ChatRoom;
 use App\Models\Ready;
-use App\Models\Section;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
@@ -15,9 +17,7 @@ class Index extends Component
 {
     use WithPagination;
 
-
     public $search;
-    public $section;
 
     public function createRoom($userIdHe) {
         if (Auth::check()) {
@@ -51,27 +51,33 @@ class Index extends Component
         }
     }
 
-    public function sections()
-    {
-        return Section::get();
-    }
-
-    public function selectSection($section)
-    {
-        session()->put('section', $section);
-        $this->section =  $section;
-    }
-
     public function data()
     {
-        $data = Ready::with('user')
-            ->where('enabled', true)
-            ->where('user_id', '!=', Auth::id())
-            ->where('title', 'LIKE', "%{$this->search}%")
-            ->whereJsonContains('sections', intval($this->section))
-            ->orderByDesc('updated_at')
-            ->orderByDesc('quality_score')
-            ->paginate(9);
+        if(Auth::check() && !in_array(1, Auth::user()->interests)) {
+            $data = User::where('enabled', true)
+                ->where('ready', true)
+                ->where('id', '!=', Auth::id())
+                ->where(function (Builder $query) {
+                    try {
+                        $query->whereJsonContains('interests', Auth::user()->interests[0])
+                        ->orWhereJsonContains('interests', Auth::user()->interests[1])
+                        ->orWhereJsonContains('interests', Auth::user()->interests[2])
+                        ->orWhereJsonContains('interests', Auth::user()->interests[3])
+                        ->orWhereJsonContains('interests', Auth::user()->interests[4]);
+                    } catch (\Throwable $th) {
+                    }
+                })
+                ->orderByDesc('updated_at')
+                ->orderByDesc('quality_score')
+                ->paginate(9);
+        }else {
+            $data = User::where('enabled', true)
+                ->where('ready', true)
+                ->where('id', '!=', Auth::id())
+                ->orderByDesc('updated_at')
+                ->orderByDesc('quality_score')
+                ->paginate(9);
+        }
         return $data;
     }
 
@@ -79,14 +85,12 @@ class Index extends Component
     {
         session()->put('url-current', url()->current());
         session()->put('route-name', request()->route()->getName());
-        $this->section =  session()->get('section') ?? 1;
     }
 
     public function render()
     {
         return view('livewire.ready.index')->with([
             'data' => $this->data(),
-            'sections' => $this->sections(),
             'usersNow' => json_encode(Cache::get('users-now'))
         ]);
     }
