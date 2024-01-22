@@ -7,7 +7,7 @@
                         <x-navbar.btn icon="list" title="drop_list" />
                     </div>
 
-                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('employees') }}" />
+                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
 
                     <div x-cloak x-on:click="darkMode = !darkMode;">
                         <div x-show="darkMode">

@@ -1,7 +1,6 @@
 <?php
 
 use BeyondCode\LaravelWebSockets\Dashboard\Http\Middleware\Authorize;
-
 return [
 
     /*
@@ -28,8 +27,8 @@ return [
             'key' => env('PUSHER_APP_KEY'),
             'secret' => env('PUSHER_APP_SECRET'),
             'enable_client_messages' => true,
-            'enable_statistics' => true,
-            'encrypted' => true,
+            'enable_statistics' => false,
+            'encrypted' => false,
         ],
     ],
 
@@ -115,20 +114,22 @@ return [
          * certificate chain of issuers. The private key also may be contained
          * in a separate file specified by local_pk.
          */
-        'local_cert' => "/home/mustafamax/public_html/ssl-opilive/cert.pem",
+        // 'local_cert' => "/home/mustafamax/public_html/ssl-opilive/cert.pem",
+        'local_cert' => null,
 
         /*
          * Path to local private key file on filesystem in case of separate files for
          * certificate (local_cert) and private key.
          */
-        'local_pk' => "/home/mustafamax/public_html/ssl-opilive/key.pem",
+        'local_pk' => null,
+        // 'local_pk' => "/home/mustafamax/public_html/ssl-opilive/key.pem",
 
         /*
          * Passphrase for your local_cert file.
          */
   		'passphrase' => null,
 
-        'verify_peer' => false,
+        // 'verify_peer' => false,
     ],
 
     /*

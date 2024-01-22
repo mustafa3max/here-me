@@ -1,5 +1,4 @@
 <?php
-
 return [
 
     /*
@@ -27,7 +26,6 @@ return [
     | each available type of connection are provided inside this array.
     |
     */
-
     'connections' => [
 
          'pusher' => [
@@ -36,15 +34,15 @@ return [
             'secret' => env('PUSHER_APP_SECRET'),
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
-                'cluster' => 'mt1',
-                'host' => '192.168.122.102',
-                'port' => 6001,
-                'scheme' => 'https',
+                'cluster' => '',
+                'host' => env('PUSHER_HOST'),
+                'port' => env('PUSHER_PORT'),
+                'scheme' => 'http',
                 'encrypted' => true,
-                'curl_options' => [
-                    CURLOPT_SSL_VERIFYHOST => 0,
-                    CURLOPT_SSL_VERIFYPEER => 0,
-                ],
+                // 'curl_options' => [
+                //     CURLOPT_SSL_VERIFYHOST => 0,
+                //     CURLOPT_SSL_VERIFYPEER => 0,
+                // ],
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html

@@ -21,14 +21,14 @@ class ForgotPassword extends Component
 
         if ($status === Password::RESET_LINK_SENT) {
             Session::flash('password_request', __('str.password_request'));
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
     }
 
     public function mount()
     {
         if (Auth::check()) {
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
     }
 

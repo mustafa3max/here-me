@@ -18,7 +18,7 @@
     <p class="text-gray-500 dark:text-gray-400 mb-4 text-lg font-light">{{ __('error.desc_error_404') }}</p>
 
     <div class="flex justify-center">
-        <a href="{{ route('employees') }}" class="w-fit">
+        <a href="{{ route('readies') }}" class="w-fit">
             <x-button type="fill-accent" text="{{ __('str.home') }}"/>
         </a>
     </div>

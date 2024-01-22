@@ -41,9 +41,9 @@
      </nav>
 
      {{-- Home --}}
-     <div class="relative h-screen bg-accent-light bg-index-header bg-center dark:bg-accent-dark" id="0">
+     <div class="relative h-screen bg-accent-light bg-index-header bg-center dark:bg-accent-dark dark:bg-opacity-10" id="0">
          <video autoplay loop muted poster="{{ asset('assets/images/bg_image_home.webp') }}"
-             class="absolute h-screen w-full object-cover max-lg:hidden">
+             class="absolute h-screen w-full object-cover">
              <source src="{{ asset('assets/videos/bg_video_home.mp4') }}" type="video/mp4">
          </video>
          <div
@@ -59,7 +59,7 @@
                  </h1>
                  <br>
                  <br>
-                 <a href="{{ route('employees') }}"
+                 <a href="{{ route('readies') }}"
                      class="block animate-pulse text-center text-xl font-bold uppercase hover:underline">{{ __('str.live_broadcast') }}</a>
              </div>
              <a href="#1" class="absolute bottom-0 animate-bounce p-2 shadow-sm" title="{{ __('str.go_info') }}"
@@ -85,7 +85,7 @@
                      <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_1') }}</h2>
                      <p class="text-xl leading-9">{{ __('home_str.description_1') }}</p>
                      <div class="pt-4">
-                         <a href="{{ route('employees') }}"
+                         <a href="{{ route('readies') }}"
                              class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
                      </div>
                  </div>
@@ -102,7 +102,7 @@
                      <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_2') }}</h2>
                      <p class="text-xl leading-9">{{ __('home_str.description_2') }}</p>
                      <div class="pt-4">
-                         <a href="{{ route('employees') }}"
+                         <a href="{{ route('readies') }}"
                              class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
                      </div>
                  </div>
@@ -133,13 +133,12 @@
                      <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_3') }}</h2>
                      <p class="text-xl leading-9">{{ __('home_str.description_3') }}</p>
                      <div class="pt-4">
-                         <a href="{{ route('employees') }}"
+                         <a href="{{ route('readies') }}"
                              class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
                      </div>
                  </div>
              </div>
          </div>
      </div>
-
-     <script src="{{ asset('js/home.js') }}"></script>
  </div>
+@vite('resources/js/home.js')

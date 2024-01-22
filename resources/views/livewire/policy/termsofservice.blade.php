@@ -36,8 +36,8 @@
                 and
                 also limit the remedies available to you in the event of a dispute. These Terms of Use were created
                 with
-                the help of the <x-button.text href="https://www.termsofusegenerator.net" isExternal="1">Terms Of Use
-                    Generator</x-button.text>.</p>
+                the help of the <a href="https://www.termsofusegenerator.net" target="_blank" class="text-accent-light dark: dark:text-accent-dark font-extrabold">Terms Of Use
+                    Generator</a>.</p>
 
 
             <h2 class="py-3 text-2xl font-bold">Access to the Site</h2>

@@ -7,10 +7,8 @@ use App\Livewire\Auth\SignIn;
 use App\Livewire\Auth\SignInGuest;
 use App\Livewire\Auth\SignUp;
 use App\Livewire\Auth\VerifyEmail;
-use App\Livewire\CallMe;
 use App\Livewire\ContactWithMe\Index as CallMeIndex;
-use App\Livewire\Employee\Index as EmployeeIndex;
-use App\Livewire\Job\Index as JobIndex;
+use App\Livewire\Ready\Index as ReadyIndex;
 use App\Livewire\Home;
 use App\Livewire\Policy\Privacypolicy;
 use App\Livewire\Policy\Termsofservice;
@@ -65,14 +63,9 @@ Route::prefix('user')->group(function () {
     });
 });
 
-// Employees
-Route::prefix('employees')->group(function () {
-    Route::get('/', EmployeeIndex::class)->name('employees');
-});
-
-// Jobs
-Route::prefix('jobs')->group(function () {
-    Route::get('/', JobIndex::class)->name('jobs');
+// Readys
+Route::prefix('readies')->group(function () {
+    Route::get('/', ReadyIndex::class)->name('readies');
 });
 
 // Policy
@@ -80,4 +73,3 @@ Route::scopeBindings()->group(function () {
     Route::get('privacy-policy', Privacypolicy::class)->name('privacy-policy');
     Route::get('terms-of-service', Termsofservice::class)->name('terms-of-service');
 });
-

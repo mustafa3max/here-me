@@ -46,7 +46,7 @@ class Globals
 
             auth('web')->logout();
 
-            return redirect('/broadcasts');
+            return redirect('readies');
         }
     }
 

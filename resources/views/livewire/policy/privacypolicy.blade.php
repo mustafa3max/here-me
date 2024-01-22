@@ -14,7 +14,7 @@
         <div dir="ltr" class="px-2">
             <h2 class="py-3 text-2xl font-bold">Privacy Policy for langfiles</h2>
 
-            <p>At langfiles, accessible from <x-button.text href="/">www.langfiles.com</x-button.text>,
+            <p>At langfiles, accessible from <a href="/" class="text-accent-light dark: dark:text-accent-dark font-extrabold">www.langfiles.com</a>,
                 one of our main priorities is the privacy of our
                 visitors. This Privacy Policy document contains types of information that is collected and recorded
                 by
@@ -172,9 +172,8 @@
                 These
                 changes are effective immediately, after they are posted on this page.</p>
 
-            <p>Our Privacy Policy was created with the help of the Privacy Policy Generator <x-button.text
-                    href="https://www.termsfeed.com/privacy-policy-generator/" isExternal="1">Privacy Policy
-                    Generator</x-button.text>.</p>
+            <p>Our Privacy Policy was created with the help of the Privacy Policy Generator <a href="https://www.termsfeed.com/privacy-policy-generator/" target="_blank" class="text-accent-light dark: dark:text-accent-dark font-extrabold">Privacy Policy
+                Generator</a>.</p>
 
             <h2 class="py-3 text-2xl font-bold">Contact Us</h2>
 

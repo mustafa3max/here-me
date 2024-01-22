@@ -30,14 +30,14 @@ class SignUp extends Component
 
         if (Auth::attempt(['name' => $validated['name'], 'email' => $validated['email'], 'password' => $validated['password']], true)) {
             event(new Registered($user));
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
     }
 
     public function mount()
     {
         if (Auth::check()) {
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
     }
 

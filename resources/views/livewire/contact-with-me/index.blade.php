@@ -46,8 +46,8 @@
         <div class="bg-accent-light dark:bg-accent-dark p-2 flex flex-col items-center justify-center ">
             <div class="text-2xl font-extrabold text-primary-light dark:text-primary-dark animate-pulse p-4">{{__('str.waiting_member')}}</div>
             <a href="{{ route('employees') }}">
-            <x-button type="fill-primary" text="{{__('str.leave_room')}}"/>
-        </a>
+                <x-button type="fill-primary" text="{{__('str.leave_room')}}"/>
+            </a>
         </div>
     </div>
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Livewire\Employee;
+namespace App\Livewire\Ready;
 
-use App\Events\JoinIndexEvent;
 use App\Models\ChatRoom;
-use App\Models\Employee;
+use App\Models\Ready;
 use App\Models\Section;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 class Index extends Component
 {
     use WithPagination;
+
 
     public $search;
     public $section;
@@ -61,9 +62,9 @@ class Index extends Component
         $this->section =  $section;
     }
 
-    public function employees()
+    public function data()
     {
-        $employees = Employee::with('user')
+        $data = Ready::with('user')
             ->where('enabled', true)
             ->where('user_id', '!=', Auth::id())
             ->where('title', 'LIKE', "%{$this->search}%")
@@ -71,12 +72,11 @@ class Index extends Component
             ->orderByDesc('updated_at')
             ->orderByDesc('quality_score')
             ->paginate(9);
-        return $employees;
+        return $data;
     }
 
     public function mount()
     {
-        JoinIndexEvent::dispatch();
         session()->put('url-current', url()->current());
         session()->put('route-name', request()->route()->getName());
         $this->section =  session()->get('section') ?? 1;
@@ -84,9 +84,10 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.employee.index')->with([
-            'employees' => $this->employees(),
-            'sections' => $this->sections()
+        return view('livewire.ready.index')->with([
+            'data' => $this->data(),
+            'sections' => $this->sections(),
+            'usersNow' => json_encode(Cache::get('users-now'))
         ]);
     }
 }

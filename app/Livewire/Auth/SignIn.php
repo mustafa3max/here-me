@@ -19,7 +19,7 @@ class SignIn extends Component
             'password' => 'required',
         ]);
         if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']], $validated['remember'])) {
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
 
         $this->dispatch('message', __('error.sign-in'));
@@ -28,7 +28,7 @@ class SignIn extends Component
     public function mount()
     {
         if (Auth::check()) {
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/employees'));
+            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
     }
 

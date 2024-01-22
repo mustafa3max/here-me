@@ -60,6 +60,15 @@
 <body
     class="relative overflow-x-hidden bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light"
     x-cloak>
+    @php
+        if(Auth::check()) {
+            if(Route::current()->getName() === 'readies'){
+                JoinIndexEvent::dispatch(Auth::id(), 'entry');
+            }else {
+                JoinIndexEvent::dispatch(Auth::id(), 'exit');
+            }
+        }
+    @endphp
     <div class="flex flex-col">
         <div wire:loading>
             <x-tool.loading-bar />
