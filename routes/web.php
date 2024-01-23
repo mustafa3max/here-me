@@ -37,7 +37,7 @@ Route::scopeBindings()->group(function () {
 
 // User
 Route::prefix('user')->group(function () {
-    Route::get('profile/{userId}', UserProfile::class)->name('profile');
+    Route::get('profile', UserProfile::class)->name('profile');
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('logout', function () {

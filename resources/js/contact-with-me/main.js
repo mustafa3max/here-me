@@ -123,6 +123,7 @@ Echo.join("ready." + window.roomKey)
     })
     .joining((_) => {
         Alpine.store("chat").readyRember = true;
+        Alpine.store("main").idRoom = window.roomKey;
     })
     .leaving((_) => {
         Alpine.store("chat").readyRember = false;

@@ -9,6 +9,7 @@
 @section('page-description')
     {{ __('seo.description_sign_in') }}
 @endsection
+
 <div x-data="{ search: false, isSearch: false }">
     <x-navbar.main />
     @component('components.containers.auth')

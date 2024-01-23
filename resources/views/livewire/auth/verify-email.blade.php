@@ -18,7 +18,7 @@
                 <img src="{{ asset('assets/images/email_verify.svg') }}" alt="">
             </div>
             <p class="text-xl">
-                {{ __('str..send_code_email') }}
+                {{ __('str.send_code_email') }}
                 {{ __('seo.description_email_verify') }}
             </p>
 

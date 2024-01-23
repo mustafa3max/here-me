@@ -22,12 +22,12 @@ class Update extends Component
         }
 
         if (in_array(1, $myInterests) && count($myInterests) > 1) {
-            return $this->dispatch('message', __('error.update_error'));
+            return $this->dispatch('message', __('error.update'));
         }
 
         $countInterests = Interest::whereIn('id', $myInterests)->get()->count();
         if($countInterests !== count($myInterests)){
-            return $this->dispatch('message', __('error.update_error'));
+            return $this->dispatch('message', __('error.update'));
         }
 
         if(count($myInterests) <= 0) {
@@ -38,9 +38,9 @@ class Update extends Component
         ]);
 
         if(boolval($update)) {
-            $this->dispatch('message', __('str.update_successfully'));
+            $this->dispatch('message', __('done.update'));
         }else {
-            $this->dispatch('message', __('error.update_error'));
+            $this->dispatch('message', __('error.update'));
         }
     }
 

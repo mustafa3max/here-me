@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 gap-2 border-2 border-secondary-light p-2 shadow-md dark:border-secondary-dark relative">
+<div class="grid grid-cols-1 gap-2 border-2 border-secondary-light p-2 shadow-md dark:border-secondary-dark group relative hover:border-accent-light dark:hover:border-accent-dark">
     <img src="{{ asset($user->banner??'assets/images/live-dark.svg') }}" alt="{{ $user->title }}"
-        class="aspect-square w-full bg-secondary-light p-2 dark:bg-secondary-dark object-cover">
+        class="aspect-square w-full bg-secondary-light dark:bg-secondary-dark object-cover border-2 border-secondary-light dark:border-secondary-dark">
 
     <div class="flex gap-2 flex-wrap items-center">
         <div class="flex gap-2 border-secondary-light grow dark:border-secondary-dark border-2 items-center ps-1 pe-2 p-1">
@@ -8,7 +8,7 @@
             <span>{{$user->name}}</span>
         </div>
 
-        <button wire:click="createRoom('{{$user->id}}')" class="w-12">
+        <button wire:click="createRoom('{{$user->id}}')" class="w-12 group-hover:animate-pulse">
             <x-button type="fill-accent" icon="telephone-fill" title="str.contact_with_me" text=""/>
         </button>
     </div>

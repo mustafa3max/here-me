@@ -3,6 +3,6 @@
          <div class="flex items-center justify-center">
              <img src="{{ asset('assets/images/loading.gif') }}" alt="{{ __('str.load') }}" class="h-24 w-24">
          </div>
-         <x-text.h-two>{{ __('str.title_loading_data') }}</x-text.h-two>
+         <x-text.h-two>{{ __('status.title_loading_data') }}</x-text.h-two>
      </div>
  </x-card.secondary>

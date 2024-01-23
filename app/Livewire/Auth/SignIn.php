@@ -22,7 +22,7 @@ class SignIn extends Component
             return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
         }
 
-        $this->dispatch('message', __('error.sign-in'));
+        $this->dispatch('message', __('error.sign_in'));
     }
 
     public function mount()

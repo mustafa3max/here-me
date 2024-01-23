@@ -9,26 +9,26 @@
                         <x-navbar.btn icon="list" title="drop_list" />
                     </div>
 
-                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
+                    <div class="max-sm:hidden">
+                        <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
+                    </div>
 
-                    <div x-cloak x-on:click="darkMode = !darkMode;">
-                        <div x-show="darkMode">
-                            <x-navbar.btn icon="moon-fill" title="light_appearance" />
-                        </div>
-                        <div x-show="!darkMode">
-                            <x-navbar.btn icon="sun-fill" title="dark_appearance" />
+                    <div class="max-sm:hidden">
+                        <div x-cloak x-on:click="darkMode = !darkMode;">
+                            <div x-show="darkMode">
+                                <x-navbar.btn icon="moon-fill" title="light_appearance" />
+                            </div>
+                            <div x-show="!darkMode">
+                                <x-navbar.btn icon="sun-fill" title="dark_appearance" />
+                            </div>
                         </div>
                     </div>
 
-                    <div x-show="isSearch" x-on:click="search = !search">
-                        <div x-show="!search">
-                            <x-navbar.btn icon="search" title="open_search" />
-                        </div>
-                        <div x-show="search">
-                            <x-navbar.btn icon="x-lg" title="close_search" />
-                        </div>
+                    <div class="max-sm:hidden">
+                        <x-navbar.btn icon="heart-fill" title="my_interests" href="{{ route('update-interests') }}"/>
                     </div>
-                    <x-navbar.btn icon="heart-fill" title="my_interests" href="{{ route('update-interests') }}"/>
+
+                    <x-navbar.alert />
 
                 </ul>
 
@@ -37,7 +37,7 @@
                 </div>
 
             </div>
-            <div class="absolute start-0 top-16 w-full max-w-sm">
+            <div class="absolute start-0 top-16 w-full max-sm:w-full sm:max-w-sm">
                 <x-navbar.menu-bar />
             </div>
         </div>

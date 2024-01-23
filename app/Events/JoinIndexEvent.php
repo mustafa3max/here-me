@@ -30,7 +30,8 @@ class JoinIndexEvent implements ShouldBroadcastNow
 
     public function broadcastWith() {
         return [
-            'users_now' => $this->usersNow
+            'users_now' => $this->usersNow,
+            'type' => $this->type,
         ];
     }
 

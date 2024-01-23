@@ -26,17 +26,17 @@
          {{-- Nav Text --}}
          <div class="flex max-w-5xl flex-wrap items-center gap-4 max-md:hidden">
              <x-home.link-index id="0" index="0">{{ __('str.home') }}</x-home.link-index>
-             <x-home.link-index id="1" index="1">{{ __('home_str.info1') }}</x-home.link-index>
-             <x-home.link-index id="2" index="2">{{ __('home_str.info2') }}</x-home.link-index>
-             <x-home.link-index id="3" index="3">{{ __('home_str.info3') }}</x-home.link-index>
+             <x-home.link-index id="1" index="1">{{ __('home.info1') }}</x-home.link-index>
+             <x-home.link-index id="2" index="2">{{ __('home.info2') }}</x-home.link-index>
+             <x-home.link-index id="3" index="3">{{ __('home.info3') }}</x-home.link-index>
          </div>
 
          {{-- Nav Icon --}}
          <div class="flex max-w-5xl flex-wrap items-center gap-4 md:hidden">
              <x-home.link-index-icon id="0" index="0" title="{{ __('str.home') }}" />
-             <x-home.link-index-icon id="1" index="1" title="{{ __('home_str.info1') }}" />
-             <x-home.link-index-icon id="2" index="2" title="{{ __('home_str.info2') }}" />
-             <x-home.link-index-icon id="3" index="3" title="{{ __('home_str.info3') }}" />
+             <x-home.link-index-icon id="1" index="1" title="{{ __('home.info1') }}" />
+             <x-home.link-index-icon id="2" index="2" title="{{ __('home.info2') }}" />
+             <x-home.link-index-icon id="3" index="3" title="{{ __('home.info3') }}" />
          </div>
      </nav>
 
@@ -60,7 +60,7 @@
                  <br>
                  <br>
                  <a href="{{ route('readies') }}"
-                     class="block animate-pulse text-center text-xl font-bold uppercase hover:underline">{{ __('str.live_broadcast') }}</a>
+                     class="block animate-pulse text-center text-xl font-bold uppercase hover:underline">{{ __('str.chat_fun') }}</a>
              </div>
              <a href="#1" class="absolute bottom-0 animate-bounce p-2 shadow-sm" title="{{ __('str.go_info') }}"
                  x-on:click="select[0]=false;select[1]=true;select[2]=false;select[3]=false;"><i
@@ -75,18 +75,18 @@
              {{-- Image --}}
              <div class="flex min-h-screen w-2/4 pb-16 pt-32 max-md:hidden">
                  <div class="flex grow items-center justify-center">
-                     <img src="{{ asset('assets/images/home_1.svg') }}" alt="{{ __('home_str.title_1') }}">
+                     <img src="{{ asset('assets/images/home_1.svg') }}" alt="{{ __('home.title_1') }}">
                  </div>
                  <div class="h-full w-0.5 bg-secondary-light dark:bg-secondary-dark"></div>
              </div>
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
                  <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_1') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home_str.description_1') }}</p>
+                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_1') }}</h2>
+                     <p class="text-xl leading-9">{{ __('home.description_1') }}</p>
                      <div class="pt-4">
                          <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
+                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
                      </div>
                  </div>
              </div>
@@ -99,11 +99,11 @@
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
                  <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_2') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home_str.description_2') }}</p>
+                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_2') }}</h2>
+                     <p class="text-xl leading-9">{{ __('home.description_2') }}</p>
                      <div class="pt-4">
                          <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
+                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
                      </div>
                  </div>
              </div>
@@ -111,7 +111,7 @@
              <div class="flex min-h-screen w-2/4 pb-16 pt-32 max-md:hidden">
                  <div class="h-full w-0.5 bg-secondary-light dark:bg-secondary-dark"></div>
                  <div class="flex grow items-center justify-center p-16">
-                     <img src="{{ asset('assets/images/home_2.svg') }}" alt="{{ __('home_str.title_2') }}">
+                     <img src="{{ asset('assets/images/home_2.svg') }}" alt="{{ __('home.title_2') }}">
                  </div>
              </div>
          </div>
@@ -123,18 +123,18 @@
              {{-- Image --}}
              <div class="flex min-h-screen w-2/4 pb-16 pt-32 max-md:hidden">
                  <div class="flex grow items-center justify-center">
-                     <img src="{{ asset('assets/images/home_3.svg') }}" alt="{{ __('home_str.title_3') }}">
+                     <img src="{{ asset('assets/images/home_3.svg') }}" alt="{{ __('home.title_3') }}">
                  </div>
                  <div class="h-full w-0.5 bg-secondary-light dark:bg-secondary-dark"></div>
              </div>
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
                  <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home_str.title_3') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home_str.description_3') }}</p>
+                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_3') }}</h2>
+                     <p class="text-xl leading-9">{{ __('home.description_3') }}</p>
                      <div class="pt-4">
                          <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.live_broadcast') }}</a>
+                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
                      </div>
                  </div>
              </div>

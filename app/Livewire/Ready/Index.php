@@ -3,12 +3,10 @@
 namespace App\Livewire\Ready;
 
 use App\Models\ChatRoom;
-use App\Models\Ready;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
@@ -47,7 +45,7 @@ class Index extends Component
                 return redirect()->route('call-me', ['id'=> $id]);
             }
         }else {
-            $this->dispatch('message', __('error.signin_first'));
+            $this->dispatch('message', __('error.sign_in_first'));
         }
     }
 
@@ -89,6 +87,7 @@ class Index extends Component
 
     public function render()
     {
+        // Cache::delete('users-now');
         return view('livewire.ready.index')->with([
             'data' => $this->data(),
             'usersNow' => json_encode(Cache::get('users-now'))

@@ -9,7 +9,7 @@
                         <button wire:click='selectSection("{{ $section }}")'>{{ $section }}</button>
                     </li>
                 @empty
-                    {{ __('str.title_no_data') }}
+                    {{ __('status.title_no_data') }}
                 @endforelse
             </ul>
             <button class="flex items-center justify-center bg-primary-light p-2 dark:bg-primary-dark"

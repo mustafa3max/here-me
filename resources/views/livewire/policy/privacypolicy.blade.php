@@ -5,11 +5,15 @@
 @section('page-title')
     {{ __('str.privacy_policy') }}
 @endsection
+
+@section('page-description')
+    {{ __('str.description_privacy_policy') }}
+@endsection
+
 <div x-data="{ search: false, isSearch: false }">
     <x-navbar.main />
-
     <x-tap.policy route="{{ $route }}">
-        <x-text.h-one>{{ __('str.privacy_policy') }}</x-text.h-one>
+        <x-text.h-one>{{ __('seo.title_privacy_policy') }}</x-text.h-one>
         <div class="mb-4 border-b-2 border-primary-light dark:border-primary-dark"></div>
         <div dir="ltr" class="px-2">
             <h2 class="py-3 text-2xl font-bold">Privacy Policy for langfiles</h2>

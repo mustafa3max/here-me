@@ -28,13 +28,13 @@ class Delete extends Component
             if ($delete) {
                 session()->flush();
                 auth('web')->logout();
-                $this->dispatch('message', __('str.done_delete_account'));
+                $this->dispatch('message', __('done.delete_account'));
                 return $this->redirect('/types');
             } else {
-                $this->dispatch('message', __('error.error_delete_account'));
+                $this->dispatch('message', __('error.delete_account'));
             }
         } else {
-            $this->dispatch('message', __('error.error_delete_account'));
+            $this->dispatch('message', __('error.delete_account'));
         }
     }
 

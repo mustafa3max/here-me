@@ -51,15 +51,21 @@
     @stack('scripts-schema')
 
     <script type="module">
-        Alpine.store('broadcast', {
-            dataStream: 'stream null',
+        Alpine.store("main", {
+            isJoin: '{{Auth::check()&&Auth::user()->ready}}',
+            memberWaiting: false,
+            userIdMe: null,
+            userIdHe: null,
+            nameHe: null,
+            refusal() {
+                Alpine.store("main").memberWaiting = false;
+            }
         });
     </script>
 </head>
 
 <body
-    class="relative overflow-x-hidden bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light"
-    x-cloak>
+    class="relative overflow-x-hidden bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light" x-cloak>
     @php
         if(Auth::check()) {
             if(Route::current()->getName() === 'readies'){
@@ -77,8 +83,10 @@
             {{ $slot }}
         </div>
     </div>
+
+    @livewire('ready.alert')
+
     @stack('scripts')
-    {{-- <script src="https://unpkg.com/@victoryoalli/alpinejs-timeout@1.0.0/dist/timeout.min.js"></script> --}}
 </body>
 
 </html>

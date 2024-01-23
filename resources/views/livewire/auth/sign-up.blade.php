@@ -30,9 +30,9 @@
 
                 <div class="flex items-center">
                     {{ __('str.new_account_message') }}
-                    <a href="{{ route('terms-of-service') }}"><x-button type="link" text="{{ __('str.terms_of_use') }}"/></a>
+                    <a href="{{ route('terms-of-service') }}"><x-button type="link" text="{{ __('seo.title_terms_of_service') }}"/></a>
                     {{ __('str.and') }}
-                    <a href="{{ route('privacy-policy') }}"><x-button type="link" text="{{ __('str.privacy_policy') }}"/></a>
+                    <a href="{{ route('privacy-policy') }}"><x-button type="link" text="{{ __('seo.title_privacy_policy') }}"/></a>
                     .
                 </div>
 

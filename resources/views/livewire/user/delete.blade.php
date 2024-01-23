@@ -9,6 +9,7 @@
 @section('page-description')
     {{ __('seo.description_delete_account', ['USER' => $user->name]) }}
 @endsection
+
 <div>
     <x-card>
         <x-desc>{{ __('seo.description_delete_account') }}</x-desc>
