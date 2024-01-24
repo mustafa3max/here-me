@@ -136,6 +136,6 @@ Echo.join("ready." + window.roomKey)
         console.log(e);
     });
 
-window.onbeforeunload = () => {
-    return "Do you want to leave the room?";
-};
+// window.onbeforeunload = () => {
+//     return "Do you want to leave the room?";
+// };

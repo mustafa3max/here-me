@@ -1,4 +1,4 @@
-<div class="w-full h-full overflow-hidden container m-auto flex flex-col" x-data="{ showEmojis: false, emojiTapParent: 'smileys_emotion' }">
+<div class="w-full h-full overflow-hidden container m-auto flex flex-col" x-data="{ showEmojis: false, emojiTapParent: 'smileys_emotion', showFile: false }">
     {{-- Chat --}}
     <ul class="flex grow flex-col gap-2 w-full overflow-y-auto px-2 scroll-smooth no-scrollbar border-x border-secondary-light dark:border-secondary-dark">
         <template x-for="(msg, id) in $store.chat.messages">
@@ -26,17 +26,23 @@
                 x-on:click="showEmojis=!showEmojis">
                 <i class="bi bi-emoji-smile-fill"></i>
             </button>
-            <input class="h-full bg-transparent outline-none w-full" placeholder="{{ __('str.write_here') }}"
+            <input class="h-full bg-transparent outline-none w-full min-w-0" placeholder="{{ __('str.write_here') }}"
                 id="input-msg">
+                <button class="w-10 h-10"
+                x-on:click="showFile=!showFile">
+                <i class="bi bi-paperclip text-xl"></i>
+            </button>
         </div>
         <button
             class="w-14 h-14 rounded-full flex text-primary-light dark:text-primary-dark items-center justify-center bg-accent-light dark:bg-accent-dark"
             onclick="send()">
             <i class="bi bi-send-fill text-xl"></i>
         </button>
-
             @component('components.tool.emojis', ['emojis' => $emojis])
             @endcomponent
+
+           <x-chat.file/>
+
     </div>
 </div>
 
