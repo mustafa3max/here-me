@@ -1,4 +1,23 @@
-window.channel = Echo.private("room." + window.roomKey);
+window.insideRoom = Echo.private("inside.room." + window.roomId);
+Echo.join("outside.room." + window.roomId)
+    .here((users) => {
+        Alpine.store("chat").readyMember = users;
+    })
+    .joining((user) => {
+        Alpine.store("chat").readyMember.push(user);
+    })
+    .leaving((user) => {
+        const index = Alpine.store("chat").readyMember.indexOf(user);
+        Alpine.store("chat").readyMember.splice(index, 1);
+    })
+    .error((e) => {
+        console.log(e);
+    });
+
+Echo.join("waiting." + Alpine.store("chat").userIdHe).here((users) => {
+    Alpine.store("chat").recall();
+});
+
 window.pc;
 window.local;
 window.remote;
@@ -30,7 +49,7 @@ window.handleOffer = async (offer) => {
     await pc.setRemoteDescription(offer);
 
     const answer = await window.pc.createAnswer();
-    window.channel.whisper("chat", {
+    window.insideRoom.whisper("chat", {
         data: { type: "answer", sdp: answer.sdp },
         type: Alpine.store("chat").type,
     });
@@ -59,7 +78,7 @@ window.call = async (type) => {
         video: true,
     });
     local.srcObject = window.localStream;
-    window.channel.whisper("chat", {
+    window.insideRoom.whisper("chat", {
         status: "calling",
         type: type,
         data: { type: "ready" },
@@ -70,7 +89,7 @@ window.makeCall = async () => {
     createPeerConnection();
 
     const offer = await window.pc.createOffer();
-    window.channel.whisper("chat", {
+    window.insideRoom.whisper("chat", {
         data: { type: "offer", sdp: offer.sdp },
         type: Alpine.store("chat").type,
     });
@@ -89,7 +108,7 @@ window.createPeerConnection = () => {
             message.sdpMid = e.candidate.sdpMid;
             message.sdpMLineIndex = e.candidate.sdpMLineIndex;
         }
-        window.channel.whisper("chat", {
+        window.insideRoom.whisper("chat", {
             data: message,
             type: Alpine.store("chat").type,
         });
@@ -104,7 +123,7 @@ window.createPeerConnection = () => {
 
 window.refusal = () => {
     Alpine.store("chat").calling = false;
-    window.channel.whisper("chat", {
+    window.insideRoom.whisper("chat", {
         status: "refusal",
         type: null,
     });
@@ -116,25 +135,6 @@ window.refusal = () => {
     window.localStream.getTracks().forEach((track) => track.stop());
     window.localStream = null;
 };
-
-Echo.join("ready." + window.roomKey)
-    .here((users) => {
-        Alpine.store("chat").readyRember = users.length == 2;
-    })
-    .joining((_) => {
-        Alpine.store("chat").readyRember = true;
-        Alpine.store("main").idRoom = window.roomKey;
-    })
-    .leaving((_) => {
-        Alpine.store("chat").readyRember = false;
-        Alpine.store("chat").messages = [];
-        window.channel.whisper("chat", {
-            status: "leaving",
-        });
-    })
-    .error((e) => {
-        console.log(e);
-    });
 
 // window.onbeforeunload = () => {
 //     return "Do you want to leave the room?";

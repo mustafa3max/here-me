@@ -49,19 +49,6 @@
     {{-- End Font Almarai --}}
 
     @stack('scripts-schema')
-
-    <script type="module">
-        Alpine.store("main", {
-            isJoin: '{{Auth::check()&&Auth::user()->ready}}',
-            memberWaiting: false,
-            userIdMe: null,
-            userIdHe: null,
-            nameHe: null,
-            refusal() {
-                Alpine.store("main").memberWaiting = false;
-            }
-        });
-    </script>
 </head>
 
 <body
@@ -83,9 +70,6 @@
             {{ $slot }}
         </div>
     </div>
-
-    @livewire('ready.alert')
-
     @stack('scripts')
 </body>
 

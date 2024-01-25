@@ -12,13 +12,14 @@
             <x-button type="fill-accent" icon="telephone-fill" title="str.contact_with_me" text=""/>
         </button>
     </div>
-    <div title="{{__('str.unavailable')}}" class="bg-accent-light dark:bg-accent-dark absolute w-full h-full bg-opacity-15 dark:bg-opacity-15 flex items-start justify-start" x-show="!Object.values($store.home.usersNow).includes('{{$user->id}}')">
+    <div title="{{__('str.unavailable')}}" class="bg-accent-light dark:bg-accent-dark absolute w-full h-full bg-opacity-15 dark:bg-opacity-15 flex items-start justify-start" x-show="!Object.values($store.index.usersNow).includes('{{$user->id}}')">
         <div class="rounded-bl-full bg-primary-light dark:bg-primary-dark w-20 h-20 bg-opacity-95 dark:bg-opacity-95 m-[1px]">
             <i class="bi bi-cone-striped text-3xl block p-3"></i>
         </div>
     </div>
     <ul class="flex flex-wrap gap-2">
-        @foreach (array_intersect(Auth::check()?Auth::user()->interests:$user->interests, $user->interests) as $interest )
+        {{-- @foreach (array_intersect(Auth::check()?Auth::user()->interests:$user->interests, $user->interests) as $interest ) --}}
+        @foreach (array_intersect($user->interests, $user->interests) as $interest )
         <li class="bg-secondary-light dark:bg-secondary-dark p-2 grow flex items-center justify-between gap-2">
             {{__('interests.'.$interest)}}
             <i class="bi bi-heart-fill"></i>

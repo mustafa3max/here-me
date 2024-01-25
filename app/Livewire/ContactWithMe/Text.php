@@ -8,6 +8,7 @@ use Livewire\Component;
 class Text extends Component
 {
     public $emojis;
+    public $data;
 
     public function mount()
     {

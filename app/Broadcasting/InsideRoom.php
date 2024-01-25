@@ -3,8 +3,9 @@
 namespace App\Broadcasting;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-class RoomChannel
+class InsideRoom
 {
 
     public function __construct()
@@ -12,8 +13,8 @@ class RoomChannel
 
     }
 
-    public function join(User $user): array|bool
+    public function join(User $user)
     {
-        return [$user->name, $user->id];
+        return $user->id;
     }
 }

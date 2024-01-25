@@ -44,7 +44,7 @@ Route::prefix('user')->group(function () {
             return Globals::logout();
         })->name('logout');
     });
-    Route::middleware('auth:sanctum', 'verified')->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
         Route::get('delete-account', UserDelete::class)->name('delete-account');
     });
 

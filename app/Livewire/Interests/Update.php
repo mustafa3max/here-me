@@ -38,7 +38,7 @@ class Update extends Component
         ]);
 
         if(boolval($update)) {
-            $this->dispatch('message', __('done.update'));
+            return $this->redirect('readies');
         }else {
             $this->dispatch('message', __('error.update'));
         }

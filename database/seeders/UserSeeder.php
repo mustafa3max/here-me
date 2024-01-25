@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Interest;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,8 +20,10 @@ class UserSeeder extends Seeder
             'email' =>  'max@max.com',
             'password' => Hash::make('m1@M'),
             'avatar' => 'storage/users/'.$id.'/images/avatar.png',
+            'interests'=> Interest::inRandomOrder()->limit(rand(1, 5))->pluck('id'),
+            'ready'=> false,
         ]);
-        for ($i = 1; $i < 3; $i++) {
+        for ($i = 1; $i < 50; $i++) {
             $id = Str::uuid();
             User::insert([
                 'id' => $id,
@@ -28,6 +31,8 @@ class UserSeeder extends Seeder
                 'email' =>  'user' . $i . '@max.com',
                 'password' => Hash::make('m1@M'),
                 'avatar' => 'storage/users/'.$id.'/images/avatar.png',
+                'interests'=> Interest::inRandomOrder()->limit(rand(1, 5))->pluck('id'),
+                'ready'=> false,
             ]);
         }
     }

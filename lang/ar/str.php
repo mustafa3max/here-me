@@ -15,7 +15,7 @@ return [
     "policy_and_terms"=> "السياسة والشروط",
     "call_us"=> "اتصل بنا",
     "empty"=> "فارغ",
-    "try_again"=> "حاول مرة أخري",
+    "try_again"=> "حاول مرة أخرى",
     "load"=> "تحميل",
     "new_account"=> "حساب جديد",
     "not_account"=> "لا تملك حساب إنشاء",
@@ -41,5 +41,8 @@ return [
     "reload_readies"=> "إعادة تحميل لإظهار المزيد",
     "chat_fun"=>"دردش واستمتع",
     "recall"=> "معاودة الإتصال",
-    "communicate_you"=> ":USER يريد التواصل معك",
+    "communicate_you"=> "يريد التواصل معك",
+    "my_chats"=> "دردشاتي",
+    "user_available_now"=> "اعضاء متوفرين الآن",
+    "user_not_available_now"=> "اعضاء غير متوفرين الآن",
 ];

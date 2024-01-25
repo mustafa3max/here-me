@@ -6,13 +6,11 @@ inputMsg.addEventListener("keypress", function (event) {
     }
 });
 
-window.channel.listenForWhisper("chat", (e) => {
-    console.log(e);
+window.insideRoom.listenForWhisper("chat", (e) => {
     if (e.type === "message") {
-        Alpine.store("chat").messages = e.messages;
+        Alpine.store("chat").messages.push(e.message);
         location.href = "#last";
-    }
-    if (e.status === "leaving") {
+    } else if (e.status === "leaving") {
         Alpine.store("chat").messages = [];
     }
 });
@@ -23,14 +21,15 @@ window.send = () => {
         const today = new Date(timeElapsed);
         const msg = {
             userId: Alpine.store("chat").userId,
+            avatar: Alpine.store("chat").avatar,
             msg: inputMsg.value,
             date: today.toLocaleTimeString(),
         };
 
-        Alpine.store("chat").messages.push(msg);
         inputMsg.value = "";
-        window.channel.whisper("chat", {
-            messages: Alpine.store("chat").messages,
+        Alpine.store("chat").messages.push(msg);
+        window.insideRoom.whisper("chat", {
+            message: msg,
             type: "message",
         });
 

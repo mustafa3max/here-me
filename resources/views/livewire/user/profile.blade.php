@@ -27,7 +27,6 @@
                 </div>
             </div>
         </div>
-        {{$avatar}}
         {{-- Change Avatar Or Banner --}}
         <form wire:submit="changeImage($store.profile.type)" class="p-2 flex flex-wrap gap-2" x-show="$store.profile.changeImage">
             <input x-show="$store.profile.isSelect[1]" class="bg-primary-light dark:placeholder:bg-accent-light block p-1 dark:bg-primary-dark border border-primary-light dark:border-primary-dark grow" type="file" wire:model="avatar" >
@@ -74,7 +73,7 @@
                 <a href="{{ route('logout') }}" class="col-span-2 sm:col-span-1">
                     <x-button type="link" text="{{ __('str.sign_out') }}" />
                 </a>
-                <a href="user/delete-account" class="col-span-2 sm:col-span-1">
+                <a href="{{ route('delete-account') }}" class="col-span-2 sm:col-span-1">
                     <x-button type="link" text="{{ __('seo.title_delete_account') }}"/>
                 </a>
             </div>

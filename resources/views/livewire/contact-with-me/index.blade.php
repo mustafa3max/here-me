@@ -36,20 +36,20 @@
         </div>
     </div>
 
-    @livewire('contact-with-me.text')
+    @livewire('contact-with-me.text', ['data' =>$data])
 
     @livewire('contact-with-me.audio', ['data' =>$data])
 
     @livewire('contact-with-me.video', ['data' =>$data])
 
-    <div class="absolute top-0 bottom-0 w-full flex items-center justify-center bg-primary-light dark:bg-primary-dark bg-opacity-80 dark:bg-opacity-80" x-show="!$store.chat.readyRember">
+    <div class="absolute top-0 bottom-0 w-full flex items-center justify-center bg-primary-light dark:bg-primary-dark bg-opacity-80 dark:bg-opacity-80" x-show="$store.chat.readyMember.length<2">
         <div class="bg-accent-light dark:bg-accent-dark p-2 flex flex-col items-center justify-center ">
             <div class="text-2xl font-extrabold text-primary-light dark:text-primary-dark animate-pulse p-4">{{__('str.waiting_member')}}</div>
             <div class="flex gap-2">
             <a href="{{ route('readies') }}">
                 <x-button type="fill-primary" text="{{__('str.leave_room')}}"/>
             </a>
-            <button wire:click='recall'>
+            <button x-on:click='$store.chat.recall()'>
                 <x-button type="fill-primary" text="{{__('str.recall')}}"/>
             </button>
         </div>
@@ -60,7 +60,7 @@
 </div>
 
 <script type="module">
-    window.roomKey = '{{$data->id}}';
+    window.roomId = '{!!$data->id!!}';
     Alpine.store('chat', {
         type: null,
         messages: [],
@@ -68,7 +68,16 @@
         callingProgress: false,
         currentTime: '00:00:00',
         userId: '{{Auth::id()}}',
-        readyRember: false,
+        userIdHe: '{!!$data->user_id_me === Auth::id()?$data->user_id_he:$data->user_id_me!!}',
+        avatar: '{{asset(Auth::user()->avatar)}}',
+        readyMember: [],
+        recall() {
+            Echo.private("waiting." + Alpine.store("chat").userIdHe).whisper("index", {
+                roomId: window.roomId,
+                userIdHe: Alpine.store("chat").userId,
+                nameHe: '{{Auth::user()->name}}',
+            });
+        }
     });
 </script>
 @vite(['resources/js/contact-with-me/main.js','resources/js/contact-with-me/text.js', 'resources/js/contact-with-me/audio.js', 'resources/js/contact-with-me/video.js'])

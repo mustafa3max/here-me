@@ -2,21 +2,19 @@
 
 namespace App\Livewire\ContactWithMe;
 
-use App\Events\JoinEvent;
 use App\Models\ChatRoom;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Index extends Component
 {
     public $roomId;
     public function data() {
-        return ChatRoom::where('id', $this->roomId)->with('userMe')->with('userHe')->get()->first();
-    }
-
-    public function recall() {
-        JoinEvent::dispatch(Auth::id(), $this->data()->user_id_he, $this->data()->userMe->name);
+        $data = ChatRoom::where('id', $this->roomId)->with('userMe')->with('userHe')->get()->first();
+        if($data->user_id_me != Auth::id() && $data->user_id_he != Auth::id()){
+            return abort(404);
+        }
+        return $data;
     }
 
     public function mount() {
@@ -24,7 +22,6 @@ class Index extends Component
         if($this->data() === null) {
             return abort(404);
         }
-        $this->recall();
     }
     public function render()
     {

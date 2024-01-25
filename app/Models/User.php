@@ -30,6 +30,8 @@ class User extends Authenticatable
 
     protected $casts = [
         'interests' => 'array',
+        'ready' => 'boolean',
+        'enabled' => 'boolean',
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];

@@ -1,4 +1,4 @@
-window.channel.listenForWhisper("chat", (e) => {
+window.insideRoom.listenForWhisper("chat", (e) => {
     if (e.type === "audio") {
         Alpine.store("chat").type = e.type;
         Alpine.store("chat").calling = true;

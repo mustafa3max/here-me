@@ -15,22 +15,30 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $search;
+    public $ready = false;
+    public $initData;
+
+    public function isReady() {
+        $this->ready = session()->get('ready')??false;
+        $this->ready = !$this->ready;
+        session()->put('ready',  $this->ready);
+    }
 
     public function createRoom($userIdHe) {
         if (Auth::check()) {
             $roomMe = ChatRoom::where('user_id_me', Auth::id())->where('user_id_he', $userIdHe)->get(['id']);
             $roomHe = ChatRoom::where('user_id_me', $userIdHe)->where('user_id_he', Auth::id())->get(['id']);
             if(count($roomMe) <= 0 && count($roomHe) <= 0){
+                $roomId = Str::uuid();
                 $create = ChatRoom::create(
                     [
-                        'id' => Str::uuid(),
+                        'id' => $roomId,
                         'user_id_me'=> Auth::id(),
                         'user_id_he'=> $userIdHe,
                     ]
                 );
                 if(boolval($create)) {
-                    return redirect()->route('call-me', ['id'=> Str::uuid()]);
+                    return redirect()->route('call-me', ['id'=> $roomId]);
                 }else {
                     $this->dispatch('message', __('error.join_chat'));
                 }
@@ -51,9 +59,8 @@ class Index extends Component
 
     public function data()
     {
-        if(Auth::check() && !in_array(1, Auth::user()->interests)) {
             $data = User::where('enabled', true)
-                ->where('ready', true)
+                ->where('ready',session()->get('ready'))
                 ->where('id', '!=', Auth::id())
                 ->where(function (Builder $query) {
                     try {
@@ -66,16 +73,8 @@ class Index extends Component
                     }
                 })
                 ->orderByDesc('updated_at')
-                ->orderByDesc('quality_score')
+                ->latest()
                 ->paginate(9);
-        }else {
-            $data = User::where('enabled', true)
-                ->where('ready', true)
-                ->where('id', '!=', Auth::id())
-                ->orderByDesc('updated_at')
-                ->orderByDesc('quality_score')
-                ->paginate(9);
-        }
         return $data;
     }
 
@@ -83,14 +82,14 @@ class Index extends Component
     {
         session()->put('url-current', url()->current());
         session()->put('route-name', request()->route()->getName());
+        $this->ready = session()->get('ready')??false;
     }
 
     public function render()
     {
         // Cache::delete('users-now');
         return view('livewire.ready.index')->with([
-            'data' => $this->data(),
-            'usersNow' => json_encode(Cache::get('users-now'))
+            'data' => $this->data()
         ]);
     }
 }

@@ -3,16 +3,17 @@
 namespace App\Broadcasting;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-class ReadyChannel
+class Ready
 {
-
     public function __construct()
     {
+
     }
 
-    public function join(User $user): array|bool
+    public function join(User $user)
     {
-        return [$user->id];
+        return Auth::id();
     }
 }
