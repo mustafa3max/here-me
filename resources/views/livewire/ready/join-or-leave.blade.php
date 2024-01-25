@@ -2,12 +2,12 @@
  :title="$store.index.isJoin?'{{ __('str.leave') }}':'{{ __('str.join') }}'"
 wire:click='joinOrleave'>
  <i class="bi text-4xl" :class="$store.index.isJoin?'bi-x':'bi-plus'"></i>
-</a>
 
-<script type="module">
+ <script type="module">
     document.addEventListener('livewire:init', () => {
        Livewire.on('is-join', (event) => {
         Alpine.store('index').isJoin = !event.isJoin;
        });
     });
 </script>
+</a>

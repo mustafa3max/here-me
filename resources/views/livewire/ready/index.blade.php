@@ -32,20 +32,19 @@
             </div>
         <x-tool.msg />
     @livewire('ready.alert')
+    <script type="module">
+        Alpine.store("index", {
+            usersNow: [],
+            currentPage: '{!!$data->currentPage()!!}',
+            userId: '{!!Auth::id()!!}',
+            roomId: null,
+            refusal() {
+                Alpine.store("index").roomId = null;
+            },
+        });
+    </script>
+
+    @vite('resources/js/ready/index.js')
     </x-containers.broadcast>
     <x-footer.main />
 </div>
-
-<script type="module">
-    Alpine.store("index", {
-        usersNow: [],
-        currentPage: '{!!$data->currentPage()!!}',
-        userId: '{!!Auth::id()!!}',
-        roomId: null,
-        refusal() {
-            Alpine.store("index").roomId = null;
-        },
-    });
-</script>
-
-@vite('resources/js/ready/index.js')

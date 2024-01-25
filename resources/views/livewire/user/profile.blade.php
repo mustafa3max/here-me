@@ -85,9 +85,8 @@
     </div>
 
     <x-footer.main />
-</div>
 
-<script type="module">
+    <script type="module">
     Alpine.store('profile', {
         type: 'avatar',
         changeImage: false,
@@ -106,3 +105,4 @@
         }
     });
 </script>
+</div>

@@ -57,9 +57,8 @@
     </div>
 
     <x-tool.msg />
-</div>
 
-<script type="module">
+    <script type="module">
     window.roomId = '{!!$data->id!!}';
     Alpine.store('chat', {
         type: null,
@@ -81,3 +80,5 @@
     });
 </script>
 @vite(['resources/js/contact-with-me/main.js','resources/js/contact-with-me/text.js', 'resources/js/contact-with-me/audio.js', 'resources/js/contact-with-me/video.js'])
+
+</div>

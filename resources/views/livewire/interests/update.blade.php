@@ -35,9 +35,8 @@
     <x-tool.msg />
     </x-containers.broadcast>
     <x-footer.main />
-</div>
 
-<script type="module">
+    <script type="module">
     Alpine.store('interest', {
         interests: JSON.parse('{!!$myInterests!!}'),
         includes(interest) {
@@ -60,3 +59,4 @@
         }
     });
 </script>
+</div>

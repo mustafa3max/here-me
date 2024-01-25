@@ -17,8 +17,6 @@
     </script>
  @endpush
 
- @vite(['resources/js/home.js'])
-
  <div x-data="{ select: [true, false, false, false] }"
      class="bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light">
 
@@ -140,5 +138,6 @@
              </div>
          </div>
      </div>
+
+    @vite('resources/js/home.js')
  </div>
-@vite('resources/js/home.js')

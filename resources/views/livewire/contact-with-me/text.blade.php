@@ -58,9 +58,8 @@
             <x-button type="fill-accent" text="" icon="x"/>
         </button>
     </div>
-</div>
 
-<script type="module">
+    <script type="module">
     Alpine.store('text', {
         showFile: false,
         dataImage: null,
@@ -84,3 +83,5 @@
     )}`;
     };
 </script>
+</div>
+
