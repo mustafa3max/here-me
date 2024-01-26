@@ -4,7 +4,6 @@ use App\Globals;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\Auth\SignIn;
-use App\Livewire\Auth\SignInGuest;
 use App\Livewire\Auth\SignUp;
 use App\Livewire\Auth\VerifyEmail;
 use App\Livewire\ContactWithMe\Index as CallMeIndex;
@@ -31,8 +30,6 @@ Route::scopeBindings()->group(function () {
 
     Route::get('/forgot-password', ForgotPassword::class)->middleware('guest')->name('password.request');
     Route::get('/reset-password/{token}', ResetPassword::class)->middleware('guest')->name('password.reset');
-
-    Route::get('sign-in-guest', SignInGuest::class)->name('sign-in-guest');
 });
 
 // User

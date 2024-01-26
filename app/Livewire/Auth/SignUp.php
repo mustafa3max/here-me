@@ -28,9 +28,12 @@ class SignUp extends Component
             'name' => $validated['name'],
         ]);
 
-        if (Auth::attempt(['name' => $validated['name'], 'email' => $validated['email'], 'password' => $validated['password']], true)) {
-            event(new Registered($user));
-            return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
+        if(boolval($user)) {
+            if (Auth::attempt(['name' => $validated['name'], 'email' => $validated['email'], 'password' => $validated['password']], true)) {
+                return $this->redirect(session()->pull('path_previous') ?? url()->to('/readies'));
+            }
+        }else {
+            $this->dispatch('message', __('error.sign_up'));
         }
     }
 

@@ -3,11 +3,11 @@
 @endsection
 
 @section('page-title')
-    {{ __('seo.title_sign_in') }}
+    {{ __('not_seo.title_sign_in') }}
 @endsection
 
 @section('page-description')
-    {{ __('seo.description_sign_in') }}
+    {{ __('not_seo.description_sign_in') }}
 @endsection
 
 <div x-data="{ search: false, isSearch: false }">
@@ -15,7 +15,7 @@
     @component('components.containers.auth')
         <x-card.secondary>
             <form wire:submit="signIn" class="grid gap-4">
-                <x-text.h-one>{{ __('seo.title_sign_in') }}</x-text.h-one>
+                <x-text.h-one>{{ __('not_seo.title_sign_in') }}</x-text.h-one>
 
                 <x-input.one isLabel="1" type="email" model="email" placeholder="{{ __('str.email') }}"></x-input.one>
 
@@ -29,12 +29,12 @@
                     </div>
 
                     <a href="{{ route('password.request') }}">
-                    <x-button type="link" text="{{ __('seo.title_forgot_password') }}"/>
+                    <x-button type="link" text="{{ __('not_seo.title_forgot_password') }}"/>
                     </a>
                 </div>
 
                 <button type="submit">
-                <x-button type="fill-accent" icon="login" text="{{ __('seo.title_sign_in') }}"/>
+                <x-button type="fill-accent" icon="login" text="{{ __('not_seo.title_sign_in') }}"/>
             </button>
                 <div class="flex items-center">
                     <span>{{ __('str.not_account') }}</span>

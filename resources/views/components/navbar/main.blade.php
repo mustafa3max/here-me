@@ -3,15 +3,13 @@
         <div class="relative z-20 mx-auto w-full p-2" x-data="{ isMenu: false }">
             <div class="mx-auto flex flex-wrap items-center justify-between">
                 <ul class="flex items-center  gap-2 text-2xl">
-                    @livewire('ready.join-or-leave')
+                    {{-- @livewire('ready.join-or-leave') --}}
 
                     <div x-on:click="isMenu=!isMenu">
                         <x-navbar.btn icon="list" title="drop_list" />
                     </div>
 
-                    <div class="max-sm:hidden">
-                        <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
-                    </div>
+                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
 
                     <div class="max-sm:hidden">
                         <div x-cloak x-on:click="darkMode = !darkMode;">
@@ -24,12 +22,7 @@
                         </div>
                     </div>
 
-                    <div class="max-sm:hidden">
-                        <x-navbar.btn icon="heart-fill" title="my_interests" href="{{ route('update-interests') }}"/>
-                    </div>
-
-                    <x-navbar.alert />
-
+                    <x-navbar.btn icon="heart-fill" title="my_interests" href="{{ route('update-interests') }}"/>
                 </ul>
 
                 <div class="max-ss:hidden">

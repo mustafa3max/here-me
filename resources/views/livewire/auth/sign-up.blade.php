@@ -3,11 +3,11 @@
 @endsection
 
 @section('page-title')
-    {{ __('seo.title_sign_up') }}
+    {{ __('not_seo.title_sign_up') }}
 @endsection
 
 @section('page-description')
-    {{ __('seo.description_sign_up') }}
+    {{ __('not_seo.description_sign_up') }}
 @endsection
 
 <div x-data="{ search: false, isSearch: false }">
@@ -28,22 +28,22 @@
 
                 <x-input.one type="password" model="password" placeholder="{{ __('str.password') }}"></x-input.one>
 
-                <div class="flex items-center">
+                <div class="flex items-center flex-wrap">
                     {{ __('str.new_account_message') }}
-                    <a href="{{ route('terms-of-service') }}"><x-button type="link" text="{{ __('seo.title_terms_of_service') }}"/></a>
+                    <a href="{{ route('terms-of-service') }}"><x-button type="link" text="{{ __('not_seo.title_terms_of_service') }}"/></a>
                     {{ __('str.and') }}
-                    <a href="{{ route('privacy-policy') }}"><x-button type="link" text="{{ __('seo.title_privacy_policy') }}"/></a>
+                    <a href="{{ route('privacy-policy') }}"><x-button type="link" text="{{ __('not_seo.title_privacy_policy') }}"/></a>
                     .
                 </div>
 
                 <button type="submit">
-                    <x-button type="fill-accent" text="{{ __('seo.title_sign_up') }}"/>
+                    <x-button type="fill-accent" text="{{ __('not_seo.title_sign_up') }}"/>
             </button>
 
             <div class="flex items-center">
                 <span class="text-gray-400">{{ __('str.already_account') }}</span>
                     <a href="{{ route('sign-in') }}">
-                        <x-button type="link" href="/sign-in" text="{{ __('seo.title_sign_in') }}"/>
+                        <x-button type="link" href="/sign-in" text="{{ __('not_seo.title_sign_in') }}"/>
                     </a>
                 </div>
             </form>

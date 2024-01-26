@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Ready;
 
-use App\Events\JoinIndexEvent;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
@@ -21,13 +20,11 @@ class JoinOrLeave extends Component
                 $leave = User::where('id', Auth::id())->update(['ready'=>false]);
                 if(boolval($leave)) {
                     $this->dispatch('message', __('done.leaved'));
-                    JoinIndexEvent::dispatch(Auth::id(), 'exit');
                 }
             }else {
                $join = User::where('id', Auth::id())->update(['ready'=>true]);
                 if(boolval($join)) {
                     $this->dispatch('message', __('done.joined'));
-                    JoinIndexEvent::dispatch(Auth::id(), 'entry');
                 }
             }
             $this->dispatch('is-join', isJoin: Auth::user()->ready);

@@ -3,18 +3,18 @@
 @endsection
 
 @section('page-title')
-    {{ __('str.terms_of_use') }}
+    {{ __('not_seo.title_terms_of_service') }}
 @endsection
 
 @section('page-description')
-    {{ __('str.description_terms_of_service') }}
+    {{ __('not_seo.description_terms_of_service') }}
 @endsection
 
 <div x-data="{ search: false, isSearch: false }">
     <x-navbar.main />
 
     <x-tap.policy route="{{ $route }}">
-        <x-text.h-one>{{ __('seo.title_terms_of_service') }}</x-text.h-one>
+        <x-text.h-one>{{ __('not_seo.title_terms_of_service') }}</x-text.h-one>
         <div class="mb-4 border-b-2 border-primary-light dark:border-primary-dark"></div>
 
         <div dir="ltr" class="p-2">

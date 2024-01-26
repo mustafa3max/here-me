@@ -43,8 +43,6 @@ class Globals
     static function logout()
     {
         if (Auth::check()) {
-            JoinIndexEvent::dispatch(Auth::id(), 'exit');
-
             session()->flush();
 
             auth('web')->logout();

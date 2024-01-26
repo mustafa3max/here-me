@@ -1,6 +1,6 @@
 <div class="z-20 flex flex-col w-full gap-4 border border-primary-light bg-secondary-light p-3 shadow-lg dark:border-primary-dark dark:bg-secondary-dark"
     x-show="isMenu" x-on:click.outside="isMenu = false" x-transition.duration.500ms>
-     {{-- Group 2 --}}
+     {{-- Group 1 --}}
      <div class="flex flex-col w-full gap-4 border-b border-primary-light dark:border-primary-dark pb-4">
         @if (Auth::check())
             @if (!Auth::user()->is_guest)
@@ -8,7 +8,7 @@
                     class="flex items-center gap-2 hover:text-accent-light dark:hover:text-accent-dark">
                     <x-image.circle alt="{{Auth::user()->name}}" src="{{ asset(Auth::user()->avatar) }}" type="primary" size="8"/>
                     <span class="grow font-extrabold">{{ Auth::user()->name }}</span>
-                    <span class="text-accent-light dark:text-accent-dark font-extrabold">{{ __('seo.title_profile') }}</span>
+                    <span class="text-accent-light dark:text-accent-dark font-extrabold">{{ __('not_seo.title_profile') }}</span>
                 </a>
             @endif
 
@@ -21,24 +21,18 @@
             <a href="{{ route('sign-up') }}"
                 class="flex items-center gap-4 hover:text-accent-light dark:hover:text-accent-dark">
                 <i class="bi bi-person-plus-fill text-2xl"></i>
-                <span>{{ __('seo.title_sign_up') }}</span>
+                <span>{{ __('not_seo.title_sign_up') }}</span>
             </a>
             <a href="{{ route('sign-in') }}"
                 class="flex items-center gap-4 hover:text-accent-light dark:hover:text-accent-dark">
                 <i class="bi bi-box-arrow-in-right text-2xl"></i>
-                <span>{{ __('seo.title_sign_in') }}</span>
+                <span>{{ __('not_seo.title_sign_in') }}</span>
             </a>
         @endif
     </div>
 
-    {{-- Group 1 --}}
+    {{-- Group 2 --}}
     <div class="flex flex-col w-full gap-4 border-b border-primary-light dark:border-primary-dark pb-4 sm:hidden">
-        <a href="{{ route('readies') }}" class="flex items-center gap-4 hover:text-accent-light dark:hover:text-accent-dark">
-            <i class="bi bi-house-door-fill text-2xl"></i>
-            <span>
-                {{ __('str.home') }}
-            </span>
-        </a>
         <div x-cloak x-on:click="darkMode = !darkMode;">
             <div x-show="darkMode">
                 <button class="flex items-center gap-4 hover:text-accent-light dark:hover:text-accent-dark">
@@ -57,12 +51,6 @@
                 </button>
             </div>
         </div>
-        <a href="{{ route('update-interests') }}" class="flex items-center gap-4 hover:text-accent-light dark:hover:text-accent-dark">
-            <i class="bi bi-heart-fill text-2xl"></i>
-            <span>
-                {{ __('str.my_interests') }}
-            </span>
-        </a>
     </div>
 
     {{-- <ul class="grid gap-4 border-y border-primary-light py-4 dark:border-primary-dark">

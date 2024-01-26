@@ -6,23 +6,23 @@
         </li>
         <a  href="{{ route('privacy-policy') }}">
             <x-button type="link"
-            text="{{ __('seo.title_privacy_policy') }}"></x-button>
+            text="{{ __('not_seo.title_privacy_policy') }}"></x-button>
         </a>
         <a   href="{{ route('terms-of-service') }}">
-            <x-button type="link" text="{{ __('seo.title_terms_of_service') }}"></x-button>
+            <x-button type="link" text="{{ __('not_seo.title_terms_of_service') }}"></x-button>
         </a>
     </ul>
 
-    {{-- Help --}}
+    {{-- Connect with us --}}
     <ul class="flex flex-col md:items-end">
         <li class="font-extrabold uppercase p-2 text-center">
-            {{ __('str.connect_us') }}
+            {{ __('str.connect_with_us') }}
         </li>
         <a   href="mailto:example@max.com">
             <x-button type="link"  text="{{__('str.email')}}"></x-button>
         </a>
-        <a  href="https://wa.me/+9647707309366" >
-            <x-button type="link"  text="Whatsapp"></x-button>
+        <a>
+            <x-button type="link"  text="{{__('str.live')}}" title="{{__('str.many_requests_try_again_later')}}"></x-button>
         </a>
     </ul>
 </div>

@@ -11,6 +11,7 @@
 @endsection
 
 <div class="grid grid-cols-1 gap-2" x-data="{ changeImage: false, }">
+    @livewire('ready.join-or-leave')
     <x-navbar.main />
     <div class="container m-auto flex flex-col gap-2 bg-secondary-light dark:bg-secondary-dark">
         <div class="relative mb-12">

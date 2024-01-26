@@ -18,12 +18,11 @@
         </div>
     </div>
     <ul class="flex flex-wrap gap-2">
-        {{-- @foreach (array_intersect(Auth::check()?Auth::user()->interests:$user->interests, $user->interests) as $interest ) --}}
-        @foreach (array_intersect($user->interests, $user->interests) as $interest )
-        <li class="bg-secondary-light dark:bg-secondary-dark p-2 grow flex items-center justify-between gap-2">
-            {{__('interests.'.$interest)}}
-            <i class="bi bi-heart-fill"></i>
-        </li>
+        @foreach (array_intersect(Auth::check()?Auth::user()->interests:$user->interests, $user->interests) as $interest )
+            <li class="bg-secondary-light dark:bg-secondary-dark p-2 grow flex items-center justify-between gap-2">
+                {{__('interests.'.$interest)}}
+                <i class="bi bi-heart-fill"></i>
+            </li>
         @endforeach
     </ul>
 </div>

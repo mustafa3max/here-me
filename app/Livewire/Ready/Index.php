@@ -40,7 +40,7 @@ class Index extends Component
                 if(boolval($create)) {
                     return redirect()->route('call-me', ['id'=> $roomId]);
                 }else {
-                    $this->dispatch('message', __('error.join_chat'));
+                    $this->dispatch('message', __('error.joined'));
                 }
             }
             else {
@@ -60,7 +60,7 @@ class Index extends Component
     public function data()
     {
             $data = User::where('enabled', true)
-                ->where('ready',session()->get('ready'))
+                ->where('ready',session()->get('ready')??false)
                 ->where('id', '!=', Auth::id())
                 ->where(function (Builder $query) {
                     try {
@@ -87,7 +87,6 @@ class Index extends Component
 
     public function render()
     {
-        // Cache::delete('users-now');
         return view('livewire.ready.index')->with([
             'data' => $this->data()
         ]);

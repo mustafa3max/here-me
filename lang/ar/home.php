@@ -2,14 +2,14 @@
 
 return [
     "info1"=> "المعلومة الاولى",
-    "title_1"=> "",
-    "description_1"=> "",
+    "title_1"=> "العنوان",
+    "description_1"=> "الوصف",
 
     "info2"=> "المعلومة الثانية",
-    "title_2"=> "",
-    "description_2"=> "",
+    "title_2"=> "العنوان",
+    "description_2"=> "الوصف",
 
     "info3"=> "المعلومة الثالثة",
-    "title_3"=> "",
-    "description_3"=> "",
+    "title_3"=> "العنوان",
+    "description_3"=> "الوصف",
 ];
