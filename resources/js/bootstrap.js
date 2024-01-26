@@ -9,12 +9,12 @@ import Pusher from "pusher-js";
 window.Pusher = Pusher;
 window.Echo = new Echo({
     broadcaster: "pusher",
-    key: import.meta.env.VITE_PUSHER_APP_KEY,
+    key: "key",
     wsHost: window.location.hostname,
-    wsPort: import.meta.env.VITE_PUSHER_PORT,
-    // wssPort: 6001,
-    cluster: "",
-    disableStats: false,
-    forceTLS: false,
-    // enabledTransports: ["ws", "wss"],
+    wsPort: 6001,
+    wssPort: 6001,
+    cluster: "mtl",
+    disableStats: true,
+    forceTLS: true,
+    enabledTransports: ["ws", "wss"],
 });

@@ -1,3 +1,4 @@
+<div>
 <div class="w-full h-full overflow-hidden container m-auto flex flex-col" x-data="{ showEmojis: false, emojiTapParent: 'smileys_emotion' }">
     {{-- Chat --}}
     <ul class="flex grow flex-col gap-2 w-full overflow-y-auto px-2 scroll-smooth no-scrollbar border-x border-secondary-light dark:border-secondary-dark">
@@ -84,3 +85,4 @@
     )}`;
     };
 </script>
+</div>

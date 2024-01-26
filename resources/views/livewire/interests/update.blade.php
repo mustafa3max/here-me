@@ -10,6 +10,7 @@
     {{ __('seo.description_update_interests') }}
 @endsection
 
+<div>
 <div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: false}">
     <x-navbar.main />
     <x-containers.broadcast>
@@ -60,3 +61,4 @@
         }
     });
 </script>
+</div>

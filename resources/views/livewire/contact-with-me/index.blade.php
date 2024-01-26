@@ -10,6 +10,7 @@
     {{ __('seo.description_call_me') }}
 @endsection
 
+<div>
 <div class="flex flex-col w-full gap-2 overflow-hidden h-screen" wire:key='{{$data->id}}'>
         {{-- Navbar --}}
     <div class="bg-secondary-light dark:bg-secondary-dark w-full">
@@ -81,3 +82,4 @@
     });
 </script>
 @vite(['resources/js/contact-with-me/main.js','resources/js/contact-with-me/text.js', 'resources/js/contact-with-me/audio.js', 'resources/js/contact-with-me/video.js'])
+</div>

@@ -30,19 +30,19 @@ return [
 
          'pusher' => [
             'driver' => 'pusher',
-            'key' => env('PUSHER_APP_KEY'),
-            'secret' => env('PUSHER_APP_SECRET'),
-            'app_id' => env('PUSHER_APP_ID'),
+            'key' => 'key',
+            'secret' => 'secret',
+            'app_id' => 'id',
             'options' => [
-                'cluster' => '',
-                'host' => env('PUSHER_HOST'),
-                'port' => env('PUSHER_PORT'),
-                'scheme' => 'http',
-                'encrypted' => true,
-                // 'curl_options' => [
-                //     CURLOPT_SSL_VERIFYHOST => 0,
-                //     CURLOPT_SSL_VERIFYPEER => 0,
-                // ],
+                'cluster' => 'mtl',
+                'host' => '127.0.0.1',
+                'port' => 6001,
+                'scheme' => 'https',
+                'encrypted' => false,
+                'curl_options' => [
+                    CURLOPT_SSL_VERIFYHOST => 0,
+                    CURLOPT_SSL_VERIFYPEER => 0,
+                ],
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html

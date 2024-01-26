@@ -6,6 +6,7 @@
     {{ __('str.description_readies') }}
 @endsection
 
+<div>
 <div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: false }">
     <x-tool.flash type="delete-account"/>
     <x-navbar.main />
@@ -49,3 +50,4 @@
 </script>
 
 @vite('resources/js/ready/index.js')
+</div>
