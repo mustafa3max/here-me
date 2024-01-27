@@ -15,7 +15,7 @@
         <x-text.p>{{ __('not_seo.description_404') }}</x-text.p>
 
         <div class="flex justify-center">
-            <a href="{{ route('readies') }}" class="w-fit">
+            <a href="{{ route('summaries') }}" class="w-fit">
                 <x-button type="fill-accent" text="{{ __('str.home') }}"/>
             </a>
         </div>

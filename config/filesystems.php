@@ -44,17 +44,17 @@ return [
             'throw' => false,
         ],
 
-        'videos' => [
+        'summaries' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/videos'),
+            'root' => storage_path('app/public/summaries'),
             'url' => env('APP_URL') . '/storage/app/public',
         ],
 
-        'users' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public/users'),
-            'url' => env('APP_URL') . '/storage/app/public',
-        ],
+        // 'users' => [
+        //     'driver' => 'local',
+        //     'root' => storage_path('app/public/users'),
+        //     'url' => env('APP_URL') . '/storage/app/public',
+        // ],
 
         's3' => [
             'driver' => 's3',

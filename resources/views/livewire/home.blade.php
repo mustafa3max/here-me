@@ -57,7 +57,7 @@
                      <br>
                      {{ __('seo.title_home') }}
                  </x-text.h-one>
-                 <a href="{{ route('readies') }}" class="animate-pulse w-fit block m-auto">
+                 <a href="{{ route('summaries') }}" class="animate-pulse w-fit block m-auto">
                     <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
                 </a>
              </div>
@@ -87,7 +87,7 @@
                     <h2 class="text-2xl font-bold">{{ __('home.title_1') }}</h2>
                     <p class="text-xl leading-9">{{ __('home.description_1') }}</p>
 
-                    <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                    <a href="{{ route('summaries') }}" class="animate-pulse w-fit block max-md:m-auto">
                         <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
                     </a>
                  </div>
@@ -107,7 +107,7 @@
                    <h2 class="text-2xl font-bold">{{ __('home.title_2') }}</h2>
                    <p class="text-xl leading-9">{{ __('home.description_2') }}</p>
 
-                   <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                   <a href="{{ route('summaries') }}" class="animate-pulse w-fit block max-md:m-auto">
                        <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
                    </a>
                 </div>
@@ -141,7 +141,7 @@
                    <h2 class="text-2xl font-bold">{{ __('home.title_3') }}</h2>
                    <p class="text-xl leading-9">{{ __('home.description_3') }}</p>
 
-                   <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                   <a href="{{ route('summaries') }}" class="animate-pulse w-fit block max-md:m-auto">
                        <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
                    </a>
                 </div>

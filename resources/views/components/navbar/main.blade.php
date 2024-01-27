@@ -9,7 +9,7 @@
                         <x-navbar.btn icon="list" title="drop_list" />
                     </div>
 
-                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('readies') }}" />
+                    <x-navbar.btn icon="house-door-fill" title="home" href="{{ route('summaries') }}" />
 
                     <div class="max-sm:hidden">
                         <div x-cloak x-on:click="darkMode = !darkMode;">
@@ -21,8 +21,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <x-navbar.btn icon="heart-fill" title="my_interests" href="{{ route('update-interests') }}"/>
                 </ul>
 
                 <div class="max-ss:hidden">

@@ -4,7 +4,7 @@
 /public/build
 /public/hot
 /public/storage/app/livewire-tmp
-/public/storage/app/public/users
+/public/storage/app/public/summaries
 /storage/framework
 /storage/logs
 /storage/*.key

@@ -39,5 +39,10 @@ export default {
         fontFamily: {
             almarai: ["Almarai", "sans-serif"],
         },
+        extend: {
+            backdropBlur: {
+                xs: "2px",
+            },
+        },
     },
 };
