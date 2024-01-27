@@ -41,11 +41,11 @@
             border: 1px solid #666;
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"> --}}
     {{-- Start Font Almarai --}}
-    <link rel="preconnect" as="style" href="https://fonts.googleapis.com">
+    {{-- <link rel="preconnect" as="style" href="https://fonts.googleapis.com">
     <link rel="preconnect" as="style" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300&display=swap" rel="stylesheet"> --}}
     {{-- End Font Almarai --}}
 
     @stack('scripts-schema')
@@ -54,9 +54,6 @@
 <body
     class="relative overflow-x-hidden bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light" x-cloak>
     <div class="flex flex-col">
-        <div wire:loading>
-            <x-tool.loading-bar />
-        </div>
         <div class="grow flex flex-col gap-2 h-screen">
             <div class="grow">
                 {{ $slot }}

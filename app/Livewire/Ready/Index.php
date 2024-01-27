@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Illuminate\Support\Str;
@@ -66,13 +67,12 @@ class Index extends Component
                     try {
                         $query->whereJsonContains('interests', Auth::user()->interests[0])
                         ->orWhereJsonContains('interests', Auth::user()->interests[1])
-                        ->orWhereJsonContains('interests', Auth::user()->interests[2])
-                        ->orWhereJsonContains('interests', Auth::user()->interests[3])
-                        ->orWhereJsonContains('interests', Auth::user()->interests[4]);
+                        ->orWhereJsonContains('interests', Auth::user()->interests[2]);
                     } catch (\Throwable $th) {
                     }
                 })
-                ->orderByDesc('updated_at')
+                // ->orderByDesc('updated_at')
+                ->orderByDesc('interests')
                 ->latest()
                 ->paginate(9);
         return $data;

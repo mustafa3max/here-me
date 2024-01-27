@@ -17,7 +17,7 @@ class Update extends Component
     }
 
     public function update($myInterests){
-        if (count($myInterests) > 5) {
+        if (count($myInterests) > 3) {
             return $this->dispatch('message', __('error.max_interests'));
         }
 

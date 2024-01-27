@@ -5,7 +5,7 @@
         @if (Auth::check())
             @if (!Auth::user()->is_guest)
                 <a href="{{ route('profile') }}"
-                    class="flex items-center gap-2 hover:text-accent-light dark:hover:text-accent-dark">
+                    class="flex items-center gap-2 hover:text-accent-light dark:hover:text-accent-dark h-12">
                     <x-image.circle alt="{{Auth::user()->name}}" src="{{ asset(Auth::user()->avatar) }}" type="primary" size="8"/>
                     <span class="grow font-extrabold">{{ Auth::user()->name }}</span>
                     <span class="text-accent-light dark:text-accent-dark font-extrabold">{{ __('not_seo.title_profile') }}</span>

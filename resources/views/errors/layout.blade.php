@@ -14,18 +14,21 @@
     <meta name="author" content="Mustafamax">
 
     @vite(['resources/css/app.css'])
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @livewireStyles()
 </head>
 
 <body
-    class="no-scrollbar flex min-h-screen items-center justify-center bg-primary-light p-4 font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light"
-    x-init="isAlpine = false" x-data="{ isAlpine: true }">
+    class="bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light flex flex-col gap-2" x-data="{footer:true}">
+    <x-navbar.main/>
 
-    @vite(['resources/js/app.js'])
+    <x-containers.side side="-">
+        <x-card.secondary>
+            @yield('page')
+        </x-card.secondary>
+    </x-containers.side>
 
+    <x-footer.main/>
+
+    @livewireScripts()
 </body>
-
 </html>

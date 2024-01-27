@@ -32,7 +32,7 @@
                 <div class="grow cursor-pointer" wire:click='update($store.interest.interests)'>
                     <x-button type="fill-accent" text="{{__('str.update_my_interests')}}" icon="hearts"/>
                 </div>
-                <div class="w-12 h-12 flex items-center justify-center border border-s-0 border-accent-light dark:border-accent-dark bg-primary-light dark:bg-primary-dark" x-text="5-$store.interest.interests.length">
+                <div class="w-12 h-12 flex items-center justify-center border border-s-0 border-accent-light dark:border-accent-dark bg-primary-light dark:bg-primary-dark" x-text="3-$store.interest.interests.length">
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
     </x-containers.side>
 
     <div wire:loading.delay>
-        <x-tool.wite />
+        <x-tool.wait />
     </div>
 
     <x-tool.msg />
@@ -57,7 +57,7 @@
                 var index = Object.values(Alpine.store('interest').interests).indexOf(Number(interest));
                 Alpine.store('interest').interests.splice(index, 1);
             }else {
-                if(Alpine.store('interest').interests.length < 5) {
+                if(Alpine.store('interest').interests.length < 3) {
                     if(interest == 1) {
                         Alpine.store('interest').interests = [];
                     }

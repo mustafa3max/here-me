@@ -1,7 +1,7 @@
 <div class="fixed z-50 bottom-0 end-0 p-2">
     <div>
         <a class="hover:text-accent shadow-lg border-2 border-primary-light dark:border-primary-dark h-16 w-16 flex items-center justify-center text-primary-light dark:text-primary-dark hover:text-primary-dark dark:hover:text-primary-light cursor-pointer bg-accent-light dark:bg-accent-dark rounded-full hover:bg-primary-light dark:hover:bg-primary-dark"
-        :title="$store.joinUser.isJoin?'{{ __('str.leave') }}':'{{ __('str.join') }}'"
+        :class="$store.joinUser.isAnim?'animate-bounce':''" :title="$store.joinUser.isJoin?'{{ __('str.leave') }}':'{{ __('str.join') }}'"
         x-on:click='$store.joinUser.isJoinAlert()'>
         <i class="bi text-4xl" :class="$store.joinUser.isJoin?'bi-x':'bi-plus'"></i>
         </a>
@@ -46,8 +46,14 @@
                 isJoin: '{!!Auth::check()?Auth::user()->ready:false!!}',
                 isUser: '{!!!Auth::check()!!}',
                 alert: false,
+                isAnim: true,
                 isJoinAlert() {
                     this.alert = !this.alert;
+                },
+                init() {
+                    setTimeout(() => {
+                        this.isAnim = false;
+                    }, 10000);
                 }
             });
             Livewire.on('is-join', (event) => {

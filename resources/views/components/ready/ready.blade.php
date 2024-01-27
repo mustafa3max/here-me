@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-2">
-    <div class="grid grid-cols-2 border border-accent-light dark:border-accent-dark">
+    <div class="grid grid-cols-2 h-12 border border-accent-light dark:border-accent-dark">
         @component('components.ready.btn', ['ready' => $ready, 'isReady'=>true])
         @endcomponent
         @component('components.ready.btn', ['ready' => !$ready, 'isReady'=>false])
