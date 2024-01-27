@@ -20,7 +20,7 @@
 
                     <div class="flex gap-2 items-center">
                         <a class="w-fit" href="{{ route('sign-in') }}">
-                            <x-button type="fill-primary" title="{{__('str.close')}}" text="{{__('not_seo.title_sign_in')}}"/>
+                            <x-button type="fill-accent" title="{{__('str.close')}}" text="{{__('not_seo.title_sign_in')}}"/>
                         </a>
                         <button class="w-fit" x-on:click="$store.joinUser.isJoinAlert()">
                             <x-button type="fill-primary" title="{{__('str.close')}}" text="" icon="x"/>

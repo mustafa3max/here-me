@@ -14,7 +14,8 @@
 <div class="grid grid-cols-1 gap-2" x-data="{ search: false, isSearch: false}">
     @livewire('ready.join-or-leave')
     <x-navbar.main />
-    <x-containers.broadcast>
+
+    <x-containers.side side="1">
         <x-card.secondary>
             <div class="flex flex-col gap-2">
                 <x-text.h-one>{{__('str.my_interests')}}</x-text.h-one>
@@ -36,9 +37,13 @@
             </div>
         </div>
         </x-card.secondary>
+    </x-containers.side>
+
+    <div wire:loading.delay>
+        <x-tool.wite />
+    </div>
+
     <x-tool.msg />
-    </x-containers.broadcast>
-    <x-footer.main />
 </div>
 
 <script type="module">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: https://ogp.me/ns#" dir="rtl" x-data="{ darkMode: localStorage.getItem('dark') === 'true', dir: '{{ Session::get('locale') == 'ar' ? 'rtl' : 'ltr' }}' }"
+<html prefix="og: https://ogp.me/ns#" dir="rtl" x-data="{ darkMode: localStorage.getItem('dark') === 'true', dir: '{{ Session::get('locale') == 'ar' ? 'rtl' : 'ltr' }}', footer:true }"
     x-init="$watch('darkMode', val => localStorage.setItem('dark', val))" x-bind:class="{ 'dark': darkMode }" class="scroll-smooth"
     lang="ar">
 
@@ -57,8 +57,12 @@
         <div wire:loading>
             <x-tool.loading-bar />
         </div>
-        <div class="grow">
-            {{ $slot }}
+        <div class="grow flex flex-col gap-2 h-screen">
+            <div class="grow">
+                {{ $slot }}
+            </div>
+
+            <x-footer.main />
         </div>
     </div>
     @stack('scripts')

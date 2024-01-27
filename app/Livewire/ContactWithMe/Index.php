@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $isFooter = false;
     public $roomId;
     public function data() {
         $data = ChatRoom::where('id', $this->roomId)->with('userMe')->with('userHe')->get()->first();

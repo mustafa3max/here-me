@@ -114,7 +114,7 @@ return [
          * certificate chain of issuers. The private key also may be contained
          * in a separate file specified by local_pk.
          */
-        'local_cert' => "/home/mustafamax/public_html/ssl-opilive/cert.pem",
+        'local_cert' => env('WEBSOCKET_SSL_CRET_PEM'),
         // 'local_cert' => null,
 
         /*
@@ -122,7 +122,7 @@ return [
          * certificate (local_cert) and private key.
          */
         // 'local_pk' => null,
-        'local_pk' => "/home/mustafamax/public_html/ssl-opilive/key.pem",
+        'local_pk' => env('WEBSOCKET_SSL_KEY_PEM'),
 
         /*
          * Passphrase for your local_cert file.

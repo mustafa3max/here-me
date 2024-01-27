@@ -1,6 +1,7 @@
 <div class="grid grid-cols-1 gap-2 border-2 border-secondary-light p-2 shadow-md dark:border-secondary-dark group relative hover:border-accent-light dark:hover:border-accent-dark">
+
     <img src="{{ asset($user->banner??'assets/images/live-dark.svg') }}" alt="{{ $user->title }}"
-        class="aspect-square w-full bg-secondary-light dark:bg-secondary-dark object-cover border-2 border-secondary-light dark:border-secondary-dark">
+        class="aspect-square w-full bg-secondary-light dark:bg-secondary-dark object-cover border-2 h-full border-secondary-light dark:border-secondary-dark">
 
     <div class="flex gap-2 flex-wrap items-center">
         <div class="flex gap-2 border-secondary-light grow dark:border-secondary-dark border-2 items-center ps-1 pe-2 p-1">
@@ -12,11 +13,18 @@
             <x-button type="fill-accent" icon="telephone-fill" title="str.contact_with_me" text=""/>
         </button>
     </div>
-    <div title="{{__('str.unavailable')}}" class="bg-accent-light dark:bg-accent-dark absolute w-full h-full bg-opacity-15 dark:bg-opacity-15 flex items-start justify-start" x-show="!Object.values($store.index.usersNow).includes('{{$user->id}}')">
-        <div class="rounded-bl-full bg-primary-light dark:bg-primary-dark w-20 h-20 bg-opacity-95 dark:bg-opacity-95 m-[1px]">
-            <i class="bi bi-cone-striped text-3xl block p-3"></i>
+
+    <div title="{{__('str.unavailable', ['USER'=>$user->name])}}" class="bg-accent-light dark:bg-accent-dark justify-stretch absolute w-full h-full bg-opacity-25 dark:bg-opacity-25 flex flex-col items-start" x-show="!Object.values($store.index.usersNow).includes('{{$user->id}}')">
+        <div class="group-hover:bg-opacity-100 dark:group-hover:bg-opacity-100 group-hover:bg-accent-light dark:group-hover:bg-accent-dark group-hover:text-primary-light dark:group-hover:text-primary-dark bg-primary-light dark:bg-primary-dark p-6 rounded-b-[50%] bg-opacity-90 dark:bg-opacity-90 text-center gap-4 flex flex-col justify-center items-center w-full shadow-lg">
+            <div class="flex gap-2">
+                <i class="block bi bi-cone-striped text-3xl mb-1"></i>
+                <i class="block bi bi-cone-striped text-4xl mt-1"></i>
+                <i class="block bi bi-cone-striped text-3xl mb-1"></i>
+            </div>
+            {{__('str.unavailable', ['USER'=>$user->name])}}
         </div>
     </div>
+
     <ul class="flex flex-wrap gap-2">
         @foreach (array_intersect(Auth::check()?Auth::user()->interests:$user->interests, $user->interests) as $interest )
             <li class="bg-secondary-light dark:bg-secondary-dark p-2 grow flex items-center justify-between gap-2">

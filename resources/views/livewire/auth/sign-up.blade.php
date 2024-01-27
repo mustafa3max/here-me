@@ -10,9 +10,10 @@
     {{ __('not_seo.description_sign_up') }}
 @endsection
 
-<div x-data="{ search: false, isSearch: false }">
+<div class="flex flex-col gap-2">
     <x-navbar.main />
-    @component('components.containers.auth')
+
+    <x-containers.side side="0">
         <x-card.secondary>
             <form wire:submit="signUp" class="grid gap-4">
                 <x-text.h-one>{{ __('str.new_account') }}</x-text.h-one>
@@ -29,10 +30,11 @@
                 <x-input.one type="password" model="password" placeholder="{{ __('str.password') }}"></x-input.one>
 
                 <div class="flex items-center flex-wrap">
-                    {{ __('str.new_account_message') }}
+                    {{ __('str.new_account_message_1') }}
                     <a href="{{ route('terms-of-service') }}"><x-button type="link" text="{{ __('not_seo.title_terms_of_service') }}"/></a>
                     {{ __('str.and') }}
                     <a href="{{ route('privacy-policy') }}"><x-button type="link" text="{{ __('not_seo.title_privacy_policy') }}"/></a>
+                    {{ __('str.new_account_message_2') }}
                     .
                 </div>
 
@@ -49,10 +51,10 @@
             </form>
 
             <div wire:loading.delay>
-                <x-tool.wite />
+                <x-tool.wait />
             </div>
 
             <x-tool.msg />
         </x-card.secondary>
-    @endcomponent
+    </x-containers.side>
 </div>

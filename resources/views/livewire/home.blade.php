@@ -18,13 +18,14 @@
  @endpush
 
  <div>
+
  <div x-data="{ select: [true, false, false, false] }"
      class="bg-primary-light font-almarai text-primary-dark dark:bg-primary-dark dark:text-primary-light">
 
      <nav class="fixed top-0 z-50 flex w-full items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
          {{-- Nav Text --}}
          <div class="flex max-w-5xl flex-wrap items-center gap-4 max-md:hidden">
-             <x-home.link-index id="0" index="0">{{ __('str.home') }}</x-home.link-index>
+             <x-home.link-index id="0" index="0">{{ __('home.home') }}</x-home.link-index>
              <x-home.link-index id="1" index="1">{{ __('home.info1') }}</x-home.link-index>
              <x-home.link-index id="2" index="2">{{ __('home.info2') }}</x-home.link-index>
              <x-home.link-index id="3" index="3">{{ __('home.info3') }}</x-home.link-index>
@@ -32,7 +33,7 @@
 
          {{-- Nav Icon --}}
          <div class="flex max-w-5xl flex-wrap items-center gap-4 md:hidden">
-             <x-home.link-index-icon id="0" index="0" title="{{ __('str.home') }}" />
+             <x-home.link-index-icon id="0" index="0" title="{{ __('home.home') }}" />
              <x-home.link-index-icon id="1" index="1" title="{{ __('home.info1') }}" />
              <x-home.link-index-icon id="2" index="2" title="{{ __('home.info2') }}" />
              <x-home.link-index-icon id="3" index="3" title="{{ __('home.info3') }}" />
@@ -49,19 +50,18 @@
              class="flex h-full items-center justify-center text-primary-light drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
              <div class="absolute bottom-0 left-0 right-0 top-0 bg-primary-dark opacity-30">
              </div>
-             <div class="z-10 p-2">
-                 <h1 class="text-center text-3xl font-extrabold">
+             <div class="z-10 p-2 flex flex-col gap-16">
+                 <x-text.h-one>
                      <span class="uppercase">{{ config('app.name') }}</span>
                      <br>
                      <br>
                      {{ __('seo.title_home') }}
-                 </h1>
-                 <br>
-                 <br>
-                 <a href="{{ route('readies') }}"
-                     class="block animate-pulse text-center text-xl font-bold uppercase hover:underline">{{ __('str.chat_fun') }}</a>
+                 </x-text.h-one>
+                 <a href="{{ route('readies') }}" class="animate-pulse w-fit block m-auto">
+                    <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
+                </a>
              </div>
-             <a href="#1" class="absolute bottom-0 animate-bounce p-2 shadow-sm" title="{{ __('str.go_info') }}"
+             <a href="#1" class="absolute bottom-0 animate-bounce p-2 shadow-sm" title="{{ __('home.go_info') }}"
                  x-on:click="select[0]=false;select[1]=true;select[2]=false;select[3]=false;"><i
                      class="bi bi-caret-down-fill"></i></a>
          </div>
@@ -80,13 +80,16 @@
              </div>
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
-                 <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_1') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home.description_1') }}</p>
-                     <div class="pt-4">
-                         <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
-                     </div>
+                 <div class="text-center md:text-start flex flex-col gap-4">
+
+                    <div class="flex items-center justify-center pb-12 md:hidden"><i class="bi bi-heart-fill text-8xl"></i></div>
+
+                    <h2 class="text-2xl font-bold">{{ __('home.title_1') }}</h2>
+                    <p class="text-xl leading-9">{{ __('home.description_1') }}</p>
+
+                    <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                        <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
+                    </a>
                  </div>
              </div>
          </div>
@@ -97,15 +100,18 @@
          <div class="flex flex-wrap">
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
-                 <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_2') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home.description_2') }}</p>
-                     <div class="pt-4">
-                         <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
-                     </div>
-                 </div>
-             </div>
+                <div class="text-center md:text-start flex flex-col gap-4">
+
+                   <div class="flex items-center justify-center pb-12 md:hidden"><i class="bi bi-wifi text-8xl"></i></div>
+
+                   <h2 class="text-2xl font-bold">{{ __('home.title_2') }}</h2>
+                   <p class="text-xl leading-9">{{ __('home.description_2') }}</p>
+
+                   <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                       <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
+                   </a>
+                </div>
+            </div>
              {{-- Image --}}
              <div class="flex min-h-screen w-2/4 pb-16 pt-32 max-md:hidden">
                  <div class="h-full w-0.5 bg-secondary-light dark:bg-secondary-dark"></div>
@@ -128,17 +134,22 @@
              </div>
              {{-- Info --}}
              <div class="flex min-h-screen w-2/4 items-center justify-center px-8 pb-16 pt-32 max-md:w-full">
-                 <div class="text-center md:text-start">
-                     <h2 class="pb-4 text-2xl font-bold">{{ __('home.title_3') }}</h2>
-                     <p class="text-xl leading-9">{{ __('home.description_3') }}</p>
-                     <div class="pt-4">
-                         <a href="{{ route('readies') }}"
-                             class="animate-pulse text-lg font-bold uppercase text-accent-light hover:underline dark:text-accent-dark">{{ __('str.chat_fun') }}</a>
-                     </div>
-                 </div>
-             </div>
+                <div class="text-center md:text-start flex flex-col gap-4">
+
+                   <div class="flex items-center justify-center pb-12 md:hidden"><i class="bi bi-lock-fill text-8xl"></i></div>
+
+                   <h2 class="text-2xl font-bold">{{ __('home.title_3') }}</h2>
+                   <p class="text-xl leading-9">{{ __('home.description_3') }}</p>
+
+                   <a href="{{ route('readies') }}" class="animate-pulse w-fit block max-md:m-auto">
+                       <x-button type="fill-accent" text="{{ __('home.chat_fun') }}"/>
+                   </a>
+                </div>
+            </div>
          </div>
      </div>
+
  </div>
+
 @vite('resources/js/home.js')
 </div>

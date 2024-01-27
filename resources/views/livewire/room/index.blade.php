@@ -22,7 +22,7 @@
                 @else
                     <x-text.p>{{__('error.sign_in_first_show_chats')}}</x-text.p>
                     <a href="{{ route('sign-in') }}">
-                        <x-button type="fill-primary" text="{{__('error.sign_in')}}"/>
+                        <x-button type="fill-primary" text="{{__('not_seo.title_sign_in')}}"/>
                     </a>
                 @endif
             </div>

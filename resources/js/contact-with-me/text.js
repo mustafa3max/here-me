@@ -1,5 +1,15 @@
 const inputMsg = document.getElementById("input-msg");
 
+Alpine.store("text", {
+    showFile: false,
+    dataImage: null,
+    isZoom: false,
+    zoom(image) {
+        this.dataImage = image;
+        this.isZoom = image != null;
+    },
+});
+
 inputMsg.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         send();
@@ -38,4 +48,15 @@ window.send = () => {
     } else {
         alert("msg requre");
     }
+};
+
+window.addToTextArea = function (emoji) {
+    let message = document.getElementById("input-msg");
+    let start_position = message.selectionStart;
+    let end_position = message.selectionEnd;
+
+    message.value = `${message.value.substring(
+        0,
+        start_position
+    )}${emoji}${message.value.substring(end_position, message.value.length)}`;
 };

@@ -33,5 +33,11 @@ export default {
 
             transparent: "#00000000",
         },
+        backgroundImage: {
+            "index-header": "url('/public/assets/images/bg_image_home.webp')",
+        },
+        fontFamily: {
+            almarai: ["Almarai", "sans-serif"],
+        },
     },
 };

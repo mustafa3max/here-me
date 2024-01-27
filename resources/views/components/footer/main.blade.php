@@ -1,4 +1,4 @@
-<div>
+<div x-show="footer">
     <x-card.secondary>
         <div class="grid grid-cols-1 items-center gap-4">
             <div class="flex items-start justify-center gap-2 max-md:grid">

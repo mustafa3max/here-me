@@ -10,9 +10,10 @@
     {{ __('not_seo.description_forgot_password') }}
 @endsection
 
-<div x-data="{ search: false, isSearch: false }">
+<div class="flex flex-col gap-2">
     <x-navbar.main />
-    @component('components.containers.auth')
+
+    <x-containers.side side="0">
         <x-card.secondary>
             <form wire:submit="forgotPassword" class="grid gap-4">
                 <x-text.h-one>{{ __('not_seo.title_forgot_password') }}</x-text.h-one>
@@ -25,10 +26,11 @@
             </form>
 
             <div wire:loading.delay>
-                <x-tool.wite />
+                <x-tool.wait />
             </div>
 
             <x-tool.msg />
         </x-card.secondary>
-    @endcomponent
+    </x-containers.side>
+
 </div>

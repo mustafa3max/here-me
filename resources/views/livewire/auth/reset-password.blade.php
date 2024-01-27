@@ -10,8 +10,9 @@
     {{ __('seo.description_reset_password') }}
 @endsection
 
-<div x-data="{ search: false, isSearch: false }">
+<div class="flex flex-col gap-2">
     <x-navbar.main />
+
     <x-card.secondary>
         <form wire:submit="resetPassword" class="grid gap-4">
             <x-text.h-one>{{ __('seo.title_reset_password') }}</x-text.h-one>
@@ -30,9 +31,10 @@
         </form>
 
         <div wire:loading.delay>
-            <x-tool.wite />
+            <x-tool.wait />
         </div>
 
         <x-tool.msg />
     </x-card.secondary>
+
 </div>
