@@ -11,7 +11,6 @@
 @endsection
 
 <div x-data="{ search: false, isSearch: false }">
-    <x-navbar.main />
     <x-tap.policy route="{{ $route }}">
         <x-text.h-one>{{ __('not_seo.title_privacy_policy') }}</x-text.h-one>
         <div class="mb-4 border-b-2 border-primary-light dark:border-primary-dark"></div>

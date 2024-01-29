@@ -76,7 +76,7 @@
                         <x-button type="link" text="{{ __('str.sign_out') }}" />
                     </a>
                     <a href="{{ route('delete-account') }}" class="col-span-2 sm:col-span-1">
-                        <x-button type="link" text="{{ __('not_not_seo.title_delete_account') }}"/>
+                        <x-button type="link" text="{{ __('not_seo.title_delete_account') }}"/>
                     </a>
                 </div>
             </div>
@@ -84,7 +84,7 @@
     </x-containers.side>
 
     <div wire:loading.delay>
-        <x-tool.wite />
+        <x-tool.wait />
     </div>
 
     <x-tool.msg />

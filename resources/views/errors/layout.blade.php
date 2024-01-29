@@ -14,6 +14,13 @@
     <meta name="author" content="Mustafamax">
 
     @vite(['resources/css/app.css'])
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    {{-- Start Font Almarai --}}
+    <link rel="preconnect" as="style" href="https://fonts.googleapis.com">
+    <link rel="preconnect" as="style" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300&display=swap" rel="stylesheet">
+    {{-- End Font Almarai --}}
     @livewireStyles()
 </head>
 
