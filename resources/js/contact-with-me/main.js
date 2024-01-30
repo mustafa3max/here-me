@@ -1,4 +1,5 @@
 window.insideRoom = Echo.private("inside.room." + window.roomId);
+
 Echo.join("outside.room." + window.roomId)
     .here((users) => {
         Alpine.store("chat").readyMember = users;
@@ -18,30 +19,36 @@ Echo.join("waiting." + Alpine.store("chat").userIdHe).here((users) => {
     Alpine.store("chat").recall();
 });
 
-window.pc;
-window.local;
-window.remote;
-window.localStream;
+window.insideRoom.listenForWhisper("chat", (e) => {
+    Alpine.store("chat").calling = true;
+    Alpine.store("chat").type = e.type;
 
-if (
-    Alpine.store("chat").type === "video" ||
-    Alpine.store("chat").type === "audio"
-) {
-    remote.ontimeupdate = () => {
-        const hours = Math.floor(remote.currentTime / 3600);
-        const minutes = Math.floor((remote.currentTime - hours * 3600) / 60);
-        const seconds = Math.floor(
-            remote.currentTime - hours * 3600 - minutes * 60
-        );
-        const timeString =
-            hours.toString().padStart(2, "0") +
-            ":" +
-            minutes.toString().padStart(2, "0") +
-            ":" +
-            seconds.toString().padStart(2, "0");
-        Alpine.store("chat").currentTime = timeString;
-    };
-}
+    if (e.data.type == "refusal") window.refusal("he");
+    if (!window.localStream) return;
+
+    switch (e.data.type) {
+        case "offer":
+            window.handleOffer(e.data);
+            break;
+        case "answer":
+            window.handleAnswer(e.data);
+            break;
+        case "candidate":
+            window.handleCandidate(e.data);
+            break;
+        case "ready":
+            if (window.pc) return;
+            window.makeCall();
+            break;
+        default:
+            break;
+    }
+});
+
+window.local = document.getElementById("local");
+window.remote = document.getElementById("remote");
+window.pc;
+window.localStream;
 
 window.handleOffer = async (offer) => {
     if (window.pc) return;
@@ -65,23 +72,21 @@ window.handleCandidate = async (candidate) => {
     if (!window.pc) return;
     if (!candidate.candidate) await window.pc.addIceCandidate(null);
     else await window.pc.addIceCandidate(candidate);
+    time();
 };
 
 window.call = async (type) => {
-    window.local = document.getElementById("local-" + type);
-    window.remote = document.getElementById("remote-" + type);
-
     Alpine.store("chat").type = type;
     Alpine.store("chat").calling = true;
     window.localStream = await navigator.mediaDevices.getUserMedia({
         audio: true,
-        video: true,
+        video: type == "video",
     });
     local.srcObject = window.localStream;
     window.insideRoom.whisper("chat", {
         status: "calling",
-        type: type,
         data: { type: "ready" },
+        type: type,
     });
 };
 
@@ -121,19 +126,42 @@ window.createPeerConnection = () => {
         .forEach((track) => window.pc.addTrack(track, window.localStream));
 };
 
-window.refusal = () => {
+window.refusal = (from) => {
     Alpine.store("chat").calling = false;
-    window.insideRoom.whisper("chat", {
-        status: "refusal",
-        type: null,
-    });
-
     if (window.pc) {
         window.pc.close();
         window.pc = null;
     }
-    window.localStream.getTracks().forEach((track) => track.stop());
+    if (window.localStream != null) {
+        window.localStream.getTracks().forEach((track) => track.stop());
+    }
     window.localStream = null;
+    window.local.srcObject = null;
+    window.remote.srcObject = null;
+
+    if (from == "me") {
+        window.insideRoom.whisper("chat", {
+            data: { type: "refusal" },
+            type: Alpine.store("chat").type,
+        });
+    }
+};
+
+window.time = () => {
+    remote.ontimeupdate = () => {
+        const hours = Math.floor(remote.currentTime / 3600);
+        const minutes = Math.floor((remote.currentTime - hours * 3600) / 60);
+        const seconds = Math.floor(
+            remote.currentTime - hours * 3600 - minutes * 60
+        );
+        const timeString =
+            hours.toString().padStart(2, "0") +
+            ":" +
+            minutes.toString().padStart(2, "0") +
+            ":" +
+            seconds.toString().padStart(2, "0");
+        Alpine.store("chat").currentTime = timeString;
+    };
 };
 
 // window.onbeforeunload = () => {

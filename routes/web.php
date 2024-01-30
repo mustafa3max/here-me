@@ -12,7 +12,7 @@ use App\Livewire\Home;
 use App\Livewire\Interests\Update;
 use App\Livewire\Policy\Privacypolicy;
 use App\Livewire\Policy\Termsofservice;
-
+use App\Livewire\Test;
 use App\Livewire\User\Delete as UserDelete;
 use App\Livewire\User\Profile as UserProfile;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;

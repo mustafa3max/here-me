@@ -11,8 +11,6 @@ export default defineConfig({
                 "resources/js/ready/index.js",
                 "resources/js/contact-with-me/main.js",
                 "resources/js/contact-with-me/text.js",
-                "resources/js/contact-with-me/audio.js",
-                "resources/js/contact-with-me/video.js",
             ],
             refresh: true,
         }),

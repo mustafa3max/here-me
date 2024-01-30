@@ -17,9 +17,7 @@
 
         @livewire('contact-with-me.text', ['data' =>$data])
 
-        @livewire('contact-with-me.audio', ['data' =>$data])
-
-        @livewire('contact-with-me.video', ['data' =>$data])
+        @livewire('contact-with-me.call', ['data' =>$data])
     </div>
 
     <x-chat.wait/>
@@ -29,13 +27,14 @@
     <script type="module">
         window.roomId = '{!!$data->id!!}';
         Alpine.store('chat', {
-            type: null,
             messages: [],
+            type: null,
             calling: false,
-            callingProgress: false,
             currentTime: '00:00:00',
             userId: '{{Auth::id()}}',
             userIdHe: '{!!$data->user_id_me === Auth::id()?$data->user_id_he:$data->user_id_me!!}',
+            avatarHe: '{!!$data->user_id_me === Auth::id()?$data->userHe->avatar:$data->userMe->avatar!!}',
+            nameHe: '{!!$data->user_id_me === Auth::id()?$data->userHe->name:$data->userMe->name!!}',
             avatar: '{{asset(Auth::user()->avatar)}}',
             readyMember: [],
             recall() {
@@ -47,5 +46,5 @@
             }
         });
     </script>
-    @vite(['resources/js/contact-with-me/main.js','resources/js/contact-with-me/text.js', 'resources/js/contact-with-me/audio.js', 'resources/js/contact-with-me/video.js'])
+    @vite(['resources/js/contact-with-me/main.js','resources/js/contact-with-me/text.js'])
 </div>
